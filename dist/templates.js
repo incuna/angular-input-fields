@@ -1,4 +1,4 @@
-angular.module('incuna-input-fields').run(['$templateCache', function($templateCache) {
+angular.module('angular-input-fields').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('templates/type/boolean-input.html',

@@ -1,7 +1,7 @@
 (function (angular, _) {
     'use strict';
 
-    var module = angular.module('incuna-input-fields', ['gettext']);
+    var module = angular.module('angular-input-fields', ['gettext']);
 
     module.directive('singleChoiceInput', [
         function () {
@@ -74,7 +74,6 @@
                                     // Group with choices
 
                                     if (scope.emptyLabel && angular.isUndefined(getGroupChoice(item, ''))) {
-                                        // Disable JSCS check for camelcase variable names since these come from the  API
                                         // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
                                         /* jshint camelcase: false */
 
@@ -97,7 +96,6 @@
                                 }
                             });
                             if (otherChoices.length) {
-                                // Disable JSCS check for camelcase variable names since these come from the  API
                                 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
                                 /* jshint camelcase: false */
                                 scope.groups.push({

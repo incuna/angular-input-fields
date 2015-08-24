@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         src: 'templates/type/*.html',
         dest: 'dist/templates.js',
         options: {
-            module: 'incuna-input-fields'
+            module: 'angular-input-fields'
         }
     };
 
@@ -57,7 +57,7 @@ module.exports = function (grunt) {
             lib: 'bower_components',
             lintFiles: [
                 'src/**/*.js',
-                'tests/**.*.js'
+                'tests/**/*.js'
             ]
         },
         watch: {
@@ -116,8 +116,7 @@ module.exports = function (grunt) {
                 reporters: ['progress'],
                 port: 9876,
                 colors: true,
-                browsers: ['Firefox' ],
-                logLevel: 'DEBUG'
+                browsers: ['Firefox' ]
             },
             dev: {
                 autoWatch: true
