@@ -1,0 +1,25 @@
+{
+  "name": "incuna-input-fields",
+  "version": "1.0.0",
+  "homepage": "https://github.com/incuna/incuna-input-fields",
+  "authors": [
+    "Marcin Wolniewicz <marcin@incuna.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular-mocks": "~1.2"
+  },
+  "dependencies": {
+    "angular": "~1.2",
+    "venturocket-angular-slider": "~0.3",
+    "angular-bind-html-compile": "~1.1",
+    "angular-gettext": "git@github.com:maxpeterson/angular-gettext.git#c10a0afdb89e631c8e9b37f951eadba92ca6b670"
+  }
+}
