@@ -20,6 +20,6 @@
     "angular": "~1.2",
     "venturocket-angular-slider": "~0.3",
     "angular-bind-html-compile": "~1.1",
-    "angular-gettext": "git@github.com:maxpeterson/angular-gettext.git#c10a0afdb89e631c8e9b37f951eadba92ca6b670"
+    "angular-gettext": "0.2.8"
   }
 }
