@@ -29,6 +29,7 @@
             $rootScope = _$rootScope_;
             $scope = $rootScope.$new();
             $templateCache = _$templateCache_;
+
         }));
 
         describe('single-choice-input', function () {
