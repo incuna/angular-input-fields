@@ -1,7 +1,7 @@
 (function (angular, _) {
     'use strict';
 
-    var module = angular.module('incuna-input-fields', ['gettext']);
+    var module = angular.module('angular-input-fields', ['gettext']);
 
     module.directive('singleChoiceInput', [
         function () {

@@ -22,7 +22,7 @@
 
         beforeEach(module('vr.directives.slider'));
         beforeEach(module('angular-bind-html-compile'));
-        beforeEach(module('incuna-input-fields'));
+        beforeEach(module('angular-input-fields'));
 
         beforeEach(inject(function (_$compile_, _$rootScope_, _$templateCache_) {
             $compile = _$compile_;
