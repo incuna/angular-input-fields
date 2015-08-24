@@ -1,3 +1,5 @@
+https://travis-ci.org/incuna/angular-input-fields.svg?branch=master
+
 # incuna-input-fields
 
 # Installation
