@@ -18,4 +18,4 @@ angular.module('app', [
 ]);
 ```
 
-* Please see source or tests to see what attributes are available for each filed
+* Please see source or tests to see what attributes are available for each field
