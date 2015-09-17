@@ -62,7 +62,7 @@ module.exports = function (grunt) {
         },
         watch: {
             templates: {
-                files: 'src/templates/type/html',
+                files: 'src/templates/**',
                 tasks: 'ngtemplates'
             },
             js: {
