@@ -1,4 +1,4 @@
-# Upcoming
+# 2.0.0
 
 * Add duration-select directive.
 * BREAKING CHANGE: Add dependency on momentjs and lodash.
