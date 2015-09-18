@@ -17,6 +17,8 @@
     "angular-mocks": "~1.2"
   },
   "dependencies": {
+    "momentjs": "2.10.6",
+    "lodash": "2.4.2",
     "angular": "~1.2",
     "venturocket-angular-slider": "~0.3",
     "angular-bind-html-compile": "~1.1",

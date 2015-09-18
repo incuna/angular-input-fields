@@ -1,3 +1,8 @@
+# Upcoming
+
+* Add duration-select directive.
+* BREAKING CHANGE: Add dependency on momentjs and lodash.
+
 # 1.0.0
 
 * Separate out reusable input types
