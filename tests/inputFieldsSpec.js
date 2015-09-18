@@ -1,4 +1,4 @@
-/* global angular, describe, beforeEach, module, inject, it, expect */
+/* global angular, describe, beforeEach, module, inject, it, expect, _, moment */
 
 (function () {
     'use strict';
@@ -240,6 +240,165 @@
                 expect($(compiledTemplate, 'label span').html()).toContain('A label');
 
             });
+        });
+
+        describe('duration-select ', function () {
+            it('should compile and have 2 select elements', function () {
+
+                template = '<div duration-select model="duration" ></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                expect($(compiledTemplate, 'select').length).toBe(2);
+            });
+
+            it('should be disabled if `disable` is set', function () {
+
+                template = '<div duration-select model="duration" disable="true" ></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                expect($(compiledTemplate, 'select[disabled]').length).toBe(2);
+            });
+
+            it('should set hour and minute based on the model', function () {
+
+                $scope.duration = moment.duration({
+                    hours: 2,
+                    minutes: 5
+                });
+                template = '<div duration-select model="duration" ></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+                expect(isolated.hours).toBe(2);
+                expect(isolated.minutes).toBe(5);
+            });
+
+            describe('should have minute choices ', function () {
+                it('that default to 0 .. 59', function () {
+
+                    template = '<div duration-select model="duration" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.minuteChoices.length).toBe(60);
+                    expect(isolated.minuteChoices).toEqual(_.range(0, 60));
+
+                });
+
+                it('that depended on minute-step', function () {
+
+                    template = '<div duration-select model="duration" minute-step="10" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.minuteChoices.length).toBe(6);
+                    expect(isolated.minuteChoices).toEqual(_.range(0, 60, 10));
+                });
+
+                it('that depended on minute-min', function () {
+
+                    template = '<div duration-select model="duration" minute-min="10" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.minuteChoices.length).toBe(50);
+                    expect(isolated.minuteChoices).toEqual(_.range(10, 60));
+                });
+
+                it('that depended on minute-max', function () {
+
+                    template = '<div duration-select model="duration" minute-max="10" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.minuteChoices.length).toBe(10);
+                    expect(isolated.minuteChoices).toEqual(_.range(0, 10));
+                });
+            });
+
+            describe('should have hour choices ', function () {
+                it('that default to 0 .. 24', function () {
+
+                    template = '<div duration-select model="duration" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.hourChoices.length).toBe(24);
+                    expect(isolated.hourChoices).toEqual(_.range(0, 24));
+                });
+
+                it('that depended on hour-step', function () {
+
+                    template = '<div duration-select model="duration" hour-step="2" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.hourChoices.length).toBe(12);
+                    expect(isolated.hourChoices).toEqual(_.range(0, 24, 2));
+                });
+
+                it('that depended on hour-min', function () {
+
+                    template = '<div duration-select model="duration" hour-min="10" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.hourChoices.length).toBe(14);
+                    expect(isolated.hourChoices).toEqual(_.range(10, 24));
+                });
+
+                it('that depended on hour-max', function () {
+
+                    template = '<div duration-select model="duration" hour-max="10" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    var isolated = compiledTemplate.isolateScope();
+
+                    expect(isolated.hourChoices.length).toBe(10);
+                    expect(isolated.hourChoices).toEqual(_.range(0, 10));
+                });
+            });
+
         });
     });
 }());

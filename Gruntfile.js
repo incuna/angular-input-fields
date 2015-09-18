@@ -101,6 +101,8 @@ module.exports = function (grunt) {
             options: {
                 basePath: '',
                 files: [
+                    '<%= config.lib %>/momentjs/moment.js',
+                    '<%= config.lib %>/lodash/dist/lodash.js',
                     '<%= config.lib %>/angular/angular.js',
                     '<%= config.lib %>/angular-mocks/angular-mocks.js',
                     '<%= config.lib %>/angular-touch/angular-touch.js',
@@ -108,7 +110,8 @@ module.exports = function (grunt) {
                     '<%= config.lib %>/angular-bind-html-compile/angular-bind-html-compile.js',
                     '<%= config.lib %>/angular-gettext/dist/angular-gettext.js',
 
-                    'dist/**/*.js',
+                    'src/**/*.js',
+                    'dist/templates.js',
                     'tests/**/*.js'
                 ],
                 frameworks: ['jasmine'],
