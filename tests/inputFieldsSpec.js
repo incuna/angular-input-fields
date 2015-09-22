@@ -271,7 +271,7 @@
                     hours: 2,
                     minutes: 5
                 });
-                template = '<div moment-select model="duration" type="duration"></div>';
+                template = '<div moment-select model="duration" use-duration="true"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -285,7 +285,7 @@
             it('should set hour and minute based on the model of duration string', function () {
 
                 $scope.duration = '01:30:00';
-                template = '<div moment-select model="duration" type="duration"></div>';
+                template = '<div moment-select model="duration" use-duration="true"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -327,7 +327,7 @@
 
             it('should return a duration object with hours and minutes', function () {
                 $scope.duration = {};
-                template = '<div moment-select model="duration" type="duration"></div>';
+                template = '<div moment-select model="duration" use-duration="true"></div>';
 
                 compiledTemplate = compile(template);
 

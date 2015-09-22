@@ -307,7 +307,7 @@
                     minuteMin: '@',
                     hourStep: '@',
                     minuteStep: '@',
-                    type: '@'
+                    useDuration: '@'
                 },
                 templateUrl: 'templates/type/moment-select.html',
                 compile: function (element, attrs) {
@@ -319,7 +319,7 @@
                         minuteMin: '0',
                         minuteMax: '60',
                         minuteStep: '1',
-                        type: 'date'
+                        useDuration: 'false'
                     });
 
                     // Return the (post) link function
@@ -328,13 +328,7 @@
                         scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
                         var group = ['hours', 'minutes'];
 
-                        var cast = function (value) {
-                            if (scope.type === 'duration') {
-                                return moment.duration(value);
-                            }
-
-                            return moment(value);
-                        };
+                        var cast = (scope.useDuration === 'true') ? moment.duration : moment;
 
                         scope.$watch('[hours, minutes]', function (newValues) {
                             if (_.all(newValues, angular.isDefined)) {
@@ -347,8 +341,8 @@
                             }
                         }, true);
                         scope.$watch('model', function (value) {
-                            value = cast(value);
                             if (angular.isDefined(value)) {
+                                value = cast(value);
                                 var values = _.object(_.map(group, function (key) {
                                     return [key, value.get(key)];
                                 }));
