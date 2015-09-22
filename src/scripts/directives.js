@@ -348,7 +348,7 @@
                         }, true);
                         scope.$watch('model', function (value) {
                             value = cast(value);
-                            if (angular.isDefined(value) && !_.isEmpty(value)) {
+                            if (angular.isDefined(value)) {
                                 var values = _.object(_.map(group, function (key) {
                                     return [key, value.get(key)];
                                 }));
