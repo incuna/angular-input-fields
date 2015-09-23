@@ -293,7 +293,7 @@
         }
     ]);
 
-    module.directive('durationSelect', [
+    module.directive('momentSelect', [
             '$compile',
         function ($compile) {
             return {
@@ -306,9 +306,10 @@
                     hourMin: '@',
                     minuteMin: '@',
                     hourStep: '@',
-                    minuteStep: '@'
+                    minuteStep: '@',
+                    useDuration: '@'
                 },
-                templateUrl: 'templates/type/duration-select.html',
+                templateUrl: 'templates/type/moment-select.html',
                 compile: function (element, attrs) {
                     // Add default attributes
                     _.defaults(attrs, {
@@ -317,7 +318,8 @@
                         hourStep: '1',
                         minuteMin: '0',
                         minuteMax: '60',
-                        minuteStep: '1'
+                        minuteStep: '1',
+                        useDuration: 'false'
                     });
 
                     // Return the (post) link function
@@ -325,19 +327,26 @@
                         scope.hourChoices = _.range(scope.hourMin, scope.hourMax, scope.hourStep);
                         scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
                         var group = ['hours', 'minutes'];
+
+                        scope.useDuration = JSON.parse(scope.useDuration);
+
+                        var cast = (scope.useDuration) ? moment.duration : moment;
+
                         scope.$watch('[hours, minutes]', function (newValues) {
                             if (_.all(newValues, angular.isDefined)) {
                                 var values = _.object(_.map(group, function (key) {
                                     return [key, scope[key] || 0];
                                 }));
-                                scope.model = moment.duration(values);
+
+                                scope.model = cast(values);
+
                             }
                         }, true);
                         scope.$watch('model', function (value) {
                             if (angular.isDefined(value)) {
-                                var duration = moment.duration(value);
+                                value = cast(value);
                                 var values = _.object(_.map(group, function (key) {
-                                    return [key, duration.get(key)];
+                                    return [key, value.get(key)];
                                 }));
                                 angular.extend(scope, values);
                             }

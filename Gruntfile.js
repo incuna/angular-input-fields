@@ -140,12 +140,12 @@ module.exports = function (grunt) {
 
     grunt.registerTask('dist-js', [
         'concat',
+        'ngtemplates',
         'uglify'
     ]);
 
     grunt.registerTask('default', [
         'dist-js',
-        'ngtemplates',
         'test'
     ]);
 

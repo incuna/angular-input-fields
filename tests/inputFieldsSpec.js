@@ -242,10 +242,10 @@
             });
         });
 
-        describe('duration-select ', function () {
+        describe('moment-select ', function () {
             it('should compile and have 2 select elements', function () {
 
-                template = '<div duration-select model="duration" ></div>';
+                template = '<div moment-select model="moment" ></div>';
 
                 compiledTemplate = compile(template);
 
@@ -256,7 +256,7 @@
 
             it('should be disabled if `disable` is set', function () {
 
-                template = '<div duration-select model="duration" disable="true" ></div>';
+                template = '<div moment-select model="moment" disable="true" ></div>';
 
                 compiledTemplate = compile(template);
 
@@ -265,13 +265,13 @@
                 expect($(compiledTemplate, 'select[disabled]').length).toBe(2);
             });
 
-            it('should set hour and minute based on the model', function () {
+            it('should set hour and minute based on the model of duration type', function () {
 
                 $scope.duration = moment.duration({
                     hours: 2,
                     minutes: 5
                 });
-                template = '<div duration-select model="duration" ></div>';
+                template = '<div moment-select model="duration" use-duration="true"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -282,10 +282,87 @@
                 expect(isolated.minutes).toBe(5);
             });
 
+            it('should set hour and minute based on the model of duration string', function () {
+
+                $scope.duration = '01:30:00';
+                template = '<div moment-select model="duration" use-duration="true"></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+                expect(isolated.hours).toBe(1);
+                expect(isolated.minutes).toBe(30);
+                expect($scope.duration.toString()).toBe('PT1H30M');
+            });
+
+            it('should set hour and minute based on the model of date string', function () {
+
+                $scope.date = '2013-02-08 09:30:26';
+                template = '<div moment-select model="date" ></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+                expect(isolated.hours).toBe(9);
+                expect(isolated.minutes).toBe(30);
+            });
+
+            it('should set hour and minute based on the model of date type', function () {
+
+                $scope.date = moment('2013-02-08 09:30:26');
+                template = '<div moment-select model="date" ></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+                expect(isolated.hours).toBe(9);
+                expect(isolated.minutes).toBe(30);
+            });
+
+            it('should return a duration object with hours and minutes', function () {
+                $scope.duration = {};
+                template = '<div moment-select model="duration" use-duration="true"></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+                isolated.hours = 9;
+                isolated.minutes = 30;
+
+                $rootScope.$digest();
+
+                expect($scope.duration.toString()).toBe('PT9H30M');
+            });
+
+            it('should return a moment object with hours and minutes', function () {
+                $scope.date = {};
+                template = '<div moment-select model="date"></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+                isolated.hours = 9;
+                isolated.minutes = 30;
+
+                $rootScope.$digest();
+
+                expect($scope.date.toString()).toContain('09:30:00');
+            });
+
             describe('should have minute choices ', function () {
                 it('that default to 0 .. 59', function () {
 
-                    template = '<div duration-select model="duration" ></div>';
+                    template = '<div moment-select model="moment" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -300,7 +377,7 @@
 
                 it('that depended on minute-step', function () {
 
-                    template = '<div duration-select model="duration" minute-step="10" ></div>';
+                    template = '<div moment-select model="moment" minute-step="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -314,7 +391,7 @@
 
                 it('that depended on minute-min', function () {
 
-                    template = '<div duration-select model="duration" minute-min="10" ></div>';
+                    template = '<div moment-select model="moment" minute-min="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -328,7 +405,7 @@
 
                 it('that depended on minute-max', function () {
 
-                    template = '<div duration-select model="duration" minute-max="10" ></div>';
+                    template = '<div moment-select model="moment" minute-max="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -344,7 +421,7 @@
             describe('should have hour choices ', function () {
                 it('that default to 0 .. 24', function () {
 
-                    template = '<div duration-select model="duration" ></div>';
+                    template = '<div moment-select model="moment" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -358,7 +435,7 @@
 
                 it('that depended on hour-step', function () {
 
-                    template = '<div duration-select model="duration" hour-step="2" ></div>';
+                    template = '<div moment-select model="moment" hour-step="2" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -372,7 +449,7 @@
 
                 it('that depended on hour-min', function () {
 
-                    template = '<div duration-select model="duration" hour-min="10" ></div>';
+                    template = '<div moment-select model="moment" hour-min="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -386,7 +463,7 @@
 
                 it('that depended on hour-max', function () {
 
-                    template = '<div duration-select model="duration" hour-max="10" ></div>';
+                    template = '<div moment-select model="moment" hour-max="10" ></div>';
 
                     compiledTemplate = compile(template);
 
