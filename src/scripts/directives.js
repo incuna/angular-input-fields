@@ -328,7 +328,9 @@
                         scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
                         var group = ['hours', 'minutes'];
 
-                        var cast = (scope.useDuration === 'true') ? moment.duration : moment;
+                        scope.useDuration = JSON.parse(scope.useDuration);
+
+                        var cast = (scope.useDuration) ? moment.duration : moment;
 
                         scope.$watch('[hours, minutes]', function (newValues) {
                             if (_.all(newValues, angular.isDefined)) {
