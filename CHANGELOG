@@ -1,4 +1,4 @@
-# UPCOMING
+# 3.0.0
 
 * BREAKING CHANGE: duration-select renamed to moment-select
 * moment-select returns a Moment object by default. Use `type="duration"`
