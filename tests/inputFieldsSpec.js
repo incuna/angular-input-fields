@@ -425,6 +425,7 @@
 
                     compiledTemplate = compile(template);
 
+
                     $rootScope.$digest();
 
                     var isolated = compiledTemplate.isolateScope();
@@ -474,6 +475,28 @@
                     expect(isolated.hourChoices.length).toBe(10);
                     expect(isolated.hourChoices).toEqual(_.range(0, 10));
                 });
+
+                it('with a default min suffix in the template', function () {
+                    template = '<div moment-select model="moment" hour-max="10" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(2)').attr('label')).toContain('min');
+                });
+
+                it('with a overwritable min suffix in the template', function () {
+                    template = '<div moment-select model="moment" hour-max="10" minutes-suffix="minutes"></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(2)').attr('label')).toContain('minutes');
+                });
+                
+                
             });
 
         });
