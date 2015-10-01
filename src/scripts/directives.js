@@ -307,7 +307,9 @@
                     minuteMin: '@',
                     hourStep: '@',
                     minuteStep: '@',
-                    useDuration: '@'
+                    useDuration: '@',
+                    trailHours: '@',
+                    trailMinutes: '@'
                 },
                 templateUrl: 'templates/type/moment-select.html',
                 compile: function (element, attrs) {
@@ -319,7 +321,9 @@
                         minuteMin: '0',
                         minuteMax: '60',
                         minuteStep: '1',
-                        useDuration: 'false'
+                        useDuration: 'false',
+                        trailHours: 'false',
+                        trailMinutes: 'false'
                     });
 
                     // Return the (post) link function
@@ -329,6 +333,8 @@
                         var group = ['hours', 'minutes'];
 
                         scope.useDuration = JSON.parse(scope.useDuration);
+                        scope.trailingHours = (JSON.parse(scope.trailHours)) ? '00' : '';
+                        scope.trailingMinutes = (JSON.parse(scope.trailMinutes)) ? '00' : '';
 
                         var cast = (scope.useDuration) ? moment.duration : moment;
 
