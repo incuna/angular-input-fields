@@ -7,7 +7,7 @@
                         class="select"
                         ng-model="hours"
                         ng-disabled="disable"
-                        ng-options="hour as hour +  ' hr'|translate for hour in hourChoices">
+                        ng-options="hour as hour for hour in hourChoices">
                     </select>
                 </td>
                 <td >
@@ -15,7 +15,7 @@
                         class="select"
                         ng-model="minutes"
                         ng-disabled="disable"
-                        ng-options="minute as minute +  ' min'|translate for minute in minuteChoices">
+                        ng-options="minute as minute for minute in minuteChoices">
                     </select>
                 </td>
             </tr>
