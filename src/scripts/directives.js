@@ -326,10 +326,10 @@
                     return function (scope, element, attrs) {
                         scope.hourChoices = _.range(scope.hourMin, scope.hourMax, scope.hourStep);
                         scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
-
                         var group = ['hours', 'minutes'];
 
                         scope.useDuration = JSON.parse(scope.useDuration);
+
                         var cast = (scope.useDuration) ? moment.duration : moment;
 
                         scope.$watch('[hours, minutes]', function (newValues) {
