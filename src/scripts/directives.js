@@ -295,7 +295,11 @@
 
     module.directive('momentSelect', [
             '$compile',
-        function ($compile) {
+            'gettextCatalog',
+        function (
+            $compile,
+            gettextCatalog
+        ) {
             return {
                 restrict: 'A',
                 scope: {
@@ -307,7 +311,9 @@
                     minuteMin: '@',
                     hourStep: '@',
                     minuteStep: '@',
-                    useDuration: '@'
+                    useDuration: '@',
+                    minutesSuffix: '@',
+                    hoursSuffix: '@'
                 },
                 templateUrl: 'templates/type/moment-select.html',
                 compile: function (element, attrs) {
@@ -319,13 +325,16 @@
                         minuteMin: '0',
                         minuteMax: '60',
                         minuteStep: '1',
-                        useDuration: 'false'
+                        useDuration: 'false',
+                        minutesSuffix: gettextCatalog.getString('min'),
+                        hoursSuffix: gettextCatalog.getString('hr')
                     });
 
                     // Return the (post) link function
                     return function (scope, element, attrs) {
                         scope.hourChoices = _.range(scope.hourMin, scope.hourMax, scope.hourStep);
                         scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
+
                         var group = ['hours', 'minutes'];
 
                         scope.useDuration = JSON.parse(scope.useDuration);

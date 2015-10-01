@@ -425,7 +425,6 @@
 
                     compiledTemplate = compile(template);
 
-
                     $rootScope.$digest();
 
                     var isolated = compiledTemplate.isolateScope();
@@ -495,8 +494,26 @@
 
                     expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(2)').attr('label')).toContain('minutes');
                 });
-                
-                
+
+                it('with a default hours suffix in the template', function () {
+                    template = '<div moment-select model="moment" hour-max="10" ></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toContain('hr');
+                });
+
+                it('with a overwritable hours suffix in the template', function () {
+                    template = '<div moment-select model="moment" hour-max="10" hours-suffix="hours"></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toContain('hours');
+                });
             });
 
         });
