@@ -1,3 +1,7 @@
+# UPCOMING
+
+* BREAKING CHANGE: remove the 'min' and 'hr' strings from the moment-select template
+
 # 3.0.0
 
 * BREAKING CHANGE: duration-select renamed to moment-select

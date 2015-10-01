@@ -311,9 +311,7 @@
                     minuteMin: '@',
                     hourStep: '@',
                     minuteStep: '@',
-                    useDuration: '@',
-                    minutesSuffix: '@',
-                    hoursSuffix: '@'
+                    useDuration: '@'
                 },
                 templateUrl: 'templates/type/moment-select.html',
                 compile: function (element, attrs) {
@@ -325,9 +323,7 @@
                         minuteMin: '0',
                         minuteMax: '60',
                         minuteStep: '1',
-                        useDuration: 'false',
-                        minutesSuffix: gettextCatalog.getString('min'),
-                        hoursSuffix: gettextCatalog.getString('hr')
+                        useDuration: 'false'
                     });
 
                     // Return the (post) link function
