@@ -474,7 +474,6 @@
                     expect(isolated.hourChoices.length).toBe(10);
                     expect(isolated.hourChoices).toEqual(_.range(0, 10));
                 });
-
             });
 
         });

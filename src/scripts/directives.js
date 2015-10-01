@@ -295,11 +295,7 @@
 
     module.directive('momentSelect', [
             '$compile',
-            'gettextCatalog',
-        function (
-            $compile,
-            gettextCatalog
-        ) {
+        function ($compile) {
             return {
                 restrict: 'A',
                 scope: {
@@ -334,7 +330,6 @@
                         var group = ['hours', 'minutes'];
 
                         scope.useDuration = JSON.parse(scope.useDuration);
-
                         var cast = (scope.useDuration) ? moment.duration : moment;
 
                         scope.$watch('[hours, minutes]', function (newValues) {
