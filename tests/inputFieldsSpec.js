@@ -428,8 +428,8 @@
                     expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(12)').attr('label')).toBe('10');
                 });
 
-                it('that can be trailed with 0s with trail-minutes attribute', function () {
-                    template = '<div moment-select model="moment" hour-max="12" trail-minutes="true"></div>';
+                it('that can be trailed with 0s with pad-minutes attribute', function () {
+                    template = '<div moment-select model="moment" hour-max="12" pad-minutes="true"></div>';
 
                     compiledTemplate = compile(template);
 
@@ -497,8 +497,8 @@
                     expect(isolated.hourChoices).toEqual(_.range(0, 10));
                 });
 
-                it('that can be trailed with 0s with trail-hours attribute', function () {
-                    template = '<div moment-select model="moment" hour-max="12" trail-hours="true"></div>';
+                it('that can be trailed with 0s with pad-hours attribute', function () {
+                    template = '<div moment-select model="moment" hour-max="12" pad-hours="true"></div>';
 
                     compiledTemplate = compile(template);
 
