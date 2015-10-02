@@ -429,7 +429,7 @@
                 });
 
                 it('that can be trailed with 0s with pad-minutes attribute', function () {
-                    template = '<div moment-select model="moment" hour-max="12" pad-minutes="true"></div>';
+                    template = '<div moment-select model="moment" hour-max="12" minutes-len="2"></div>';
 
                     compiledTemplate = compile(template);
 
@@ -498,7 +498,7 @@
                 });
 
                 it('that can be trailed with 0s with pad-hours attribute', function () {
-                    template = '<div moment-select model="moment" hour-max="12" pad-hours="true"></div>';
+                    template = '<div moment-select model="moment" hour-max="12" hours-len="2"></div>';
 
                     compiledTemplate = compile(template);
 
@@ -521,5 +521,33 @@
             });
 
         });
+
+        describe('Number padding filter', function () {
+            var numberPaddingFilter;
+
+            beforeEach(function () {
+                inject(function (_numberPaddingFilter_) {
+                    numberPaddingFilter = _numberPaddingFilter_;
+                });
+            });
+
+            it('should add leading 0s to single digits', function () {
+                expect(numberPaddingFilter(0, '2')).toBe('00');
+            });
+
+            it('should not add leading 0s to double digits', function () {
+                expect(numberPaddingFilter(11, '2')).toBe('11');
+            });
+
+            it('should not add leading 0s if second argument is 0', function () {
+                expect(numberPaddingFilter(0, '0')).toBe('0');
+            });
+
+            it('should not trim the double digit number if second argument is 0', function () {
+                expect(numberPaddingFilter(10, '0')).toBe('10');
+            });
+
+        });
+
     });
 }());
