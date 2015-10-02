@@ -1,7 +1,7 @@
 # UPCOMING
 
 * BREAKING CHANGE: remove the 'min' and 'hr' strings from the moment-select template
-* Add trail-hours and trail-minutes attributes to moment-select
+* Add pad-hours and pad-minutes attributes to moment-select
 
 # 3.0.0
 
