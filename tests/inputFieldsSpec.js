@@ -416,6 +416,28 @@
                     expect(isolated.minuteChoices.length).toBe(10);
                     expect(isolated.minuteChoices).toEqual(_.range(0, 10));
                 });
+
+                it('that are not trailed with 0s by default', function () {
+                    template = '<div moment-select model="moment" hour-max="12"></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(2)').attr('label')).toBe('0');
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(12)').attr('label')).toBe('10');
+                });
+
+                it('that can be trailed with 0s with pad-minutes attribute', function () {
+                    template = '<div moment-select model="moment" hour-max="12" pad-minutes="true"></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(2)').attr('label')).toBe('00');
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(12)').attr('label')).toBe('10');
+                });
             });
 
             describe('should have hour choices ', function () {
@@ -473,6 +495,28 @@
 
                     expect(isolated.hourChoices.length).toBe(10);
                     expect(isolated.hourChoices).toEqual(_.range(0, 10));
+                });
+
+                it('that can be trailed with 0s with pad-hours attribute', function () {
+                    template = '<div moment-select model="moment" hour-max="12" pad-hours="true"></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('00');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(12)').attr('label')).toBe('10');
+                });
+
+                it('that are not trailed with 0s by default', function () {
+                    template = '<div moment-select model="moment" hour-max="12"></div>';
+
+                    compiledTemplate = compile(template);
+
+                    $rootScope.$digest();
+
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('0');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(12)').attr('label')).toBe('10');
                 });
             });
 

@@ -307,7 +307,9 @@
                     minuteMin: '@',
                     hourStep: '@',
                     minuteStep: '@',
-                    useDuration: '@'
+                    useDuration: '=',
+                    padHours: '=',
+                    padMinutes: '='
                 },
                 templateUrl: 'templates/type/moment-select.html',
                 compile: function (element, attrs) {
@@ -319,16 +321,28 @@
                         minuteMin: '0',
                         minuteMax: '60',
                         minuteStep: '1',
-                        useDuration: 'false'
+                        useDuration: false,
+                        padHours: false,
+                        padMinutes: false
                     });
 
                     // Return the (post) link function
                     return function (scope, element, attrs) {
-                        scope.hourChoices = _.range(scope.hourMin, scope.hourMax, scope.hourStep);
-                        scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
-                        var group = ['hours', 'minutes'];
+                        var padZeros = function (number) {
+                            return ('00' + number).slice(-2);
+                        };
 
-                        scope.useDuration = JSON.parse(scope.useDuration);
+                        scope.hourChoices = _.range(scope.hourMin, scope.hourMax, scope.hourStep);
+                        if (scope.padHours) {
+                            scope.hourChoices = _.map(scope.hourChoices, padZeros);
+                        }
+
+                        scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
+                        if (scope.padMinutes) {
+                            scope.minuteChoices = _.map(scope.minuteChoices, padZeros);
+                        }
+
+                        var group = ['hours', 'minutes'];
 
                         var cast = (scope.useDuration) ? moment.duration : moment;
 
