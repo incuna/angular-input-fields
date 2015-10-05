@@ -1,4 +1,4 @@
-# UPCOMING
+# 4.0.0
 
 * BREAKING CHANGE: remove the 'min' and 'hr' strings from the moment-select template
 * Add hours-len and minutes-len attributes to moment-select
