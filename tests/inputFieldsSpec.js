@@ -533,18 +533,24 @@
 
             it('should add leading 0s to single digits', function () {
                 expect(numberPaddingFilter(0, '2')).toBe('00');
+                expect(numberPaddingFilter(0, 2)).toBe('00');
             });
 
             it('should not add leading 0s to double digits', function () {
                 expect(numberPaddingFilter(11, '2')).toBe('11');
+                expect(numberPaddingFilter(11, 2)).toBe('11');
             });
 
-            it('should not add leading 0s if second argument is 0', function () {
+            it('should not add leading 0s if second argument is 0 or 1', function () {
                 expect(numberPaddingFilter(0, '0')).toBe('0');
+                expect(numberPaddingFilter(0, '1')).toBe('0');
+                expect(numberPaddingFilter(0, 0)).toBe('0');
             });
 
-            it('should not trim the double digit number if second argument is 0', function () {
+            it('should not trim the double digit number if second argument is 0 or 1', function () {
                 expect(numberPaddingFilter(10, '0')).toBe('10');
+                expect(numberPaddingFilter(10, '1')).toBe('10');
+                expect(numberPaddingFilter(10, 0)).toBe('10');
             });
 
         });

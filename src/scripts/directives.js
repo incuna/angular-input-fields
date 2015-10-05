@@ -298,7 +298,7 @@
             return _.memoize(function (input, numOfDigits) {
                 input = input.toString();
                 while (input.length < numOfDigits) {
-                    input = '0' + '' + input;
+                    input = '0' + input;
                 }
 
                 return input;
