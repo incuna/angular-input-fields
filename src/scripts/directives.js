@@ -293,6 +293,21 @@
         }
     ]);
 
+    module.filter('numberPadding', [
+        function () {
+            return _.memoize(function (input, numOfDigits) {
+                input = input.toString();
+                while (input.length < numOfDigits) {
+                    input = '0' + input;
+                }
+
+                return input;
+            }, function (input, numOfDigits) {
+                return input + '' + numOfDigits;
+            });
+        }
+    ]);
+
     module.directive('momentSelect', [
             '$compile',
         function ($compile) {
@@ -308,8 +323,8 @@
                     hourStep: '@',
                     minuteStep: '@',
                     useDuration: '=',
-                    padHours: '=',
-                    padMinutes: '='
+                    hoursLen: '@',
+                    minutesLen: '@'
                 },
                 templateUrl: 'templates/type/moment-select.html',
                 compile: function (element, attrs) {
@@ -322,25 +337,14 @@
                         minuteMax: '60',
                         minuteStep: '1',
                         useDuration: false,
-                        padHours: false,
-                        padMinutes: false
+                        hoursLen: '0',
+                        minutesLen: '0'
                     });
 
                     // Return the (post) link function
                     return function (scope, element, attrs) {
-                        var padZeros = function (number) {
-                            return ('00' + number).slice(-2);
-                        };
-
                         scope.hourChoices = _.range(scope.hourMin, scope.hourMax, scope.hourStep);
-                        if (scope.padHours) {
-                            scope.hourChoices = _.map(scope.hourChoices, padZeros);
-                        }
-
                         scope.minuteChoices = _.range(scope.minuteMin, scope.minuteMax, scope.minuteStep);
-                        if (scope.padMinutes) {
-                            scope.minuteChoices = _.map(scope.minuteChoices, padZeros);
-                        }
 
                         var group = ['hours', 'minutes'];
 
