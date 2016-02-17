@@ -350,7 +350,21 @@
 
                         var cast = (scope.useDuration) ? moment.duration : moment;
 
-                        var setupModel = function () {
+                        scope.$watchGroup(['hours', 'minutes'], function (newValues) {
+                            var hours = newValues[0];
+                            var minutes = newValues[1];
+                            var timeObject = {};
+
+                            if (angular.isDefined(hours)) {
+                                timeObject.hours = hours;
+                            }
+                            if (angular.isDefined(minutes)) {
+                                timeObject.minutes = minutes;
+                            }
+                            scope.model = cast(timeObject);
+                        });
+
+                        var deregisterModelWatch = scope.$watch('model', function (value) {
                             if (angular.isDefined(scope.model)) {
                                 var value = cast(scope.model);
                                 var timeObject = {};
@@ -364,24 +378,8 @@
                                     timeObject.minutes = value.get(minutes);
                                 }
                                 angular.extend(scope, timeObject);
+                                deregisterModelWatch();
                             }
-                        };
-
-                        setupModel();
-
-                        scope.$watchGroup(['hours', 'minutes'], function (newValues) {
-                            var hours = newValues[0];
-                            var minutes = newValues[1];
-                            var timeObject = {};
-
-                            if (angular.isDefined(hours)) {
-                                timeObject.hours = hours;
-                            }
-                            if (angular.isDefined(minutes)) {
-                                timeObject.minutes = minutes;
-                            }
-                            scope.model = cast(timeObject);
-                            setupModel();
                         });
                     };
                 }
