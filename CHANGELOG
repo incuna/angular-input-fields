@@ -1,3 +1,8 @@
+# upcoming
+
+* BREAKING CHANGE: On the moment-select directive, remove the watch on the model as it might cause infinite loops.
+* Also remove loops as it is a lot for just two values.
+
 # 4.0.0
 
 * BREAKING CHANGE: remove the 'min' and 'hr' strings from the moment-select template
