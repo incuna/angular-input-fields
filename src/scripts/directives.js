@@ -366,7 +366,7 @@
 
                         var deregisterModelWatch = scope.$watch('model', function (value) {
                             if (angular.isDefined(scope.model)) {
-                                var value = cast(scope.model);
+                                value = cast(scope.model);
                                 var timeObject = {};
                                 var hours = group[0];
                                 var minutes = group[1];
