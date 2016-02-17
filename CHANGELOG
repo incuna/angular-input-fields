@@ -2,7 +2,7 @@
 
 * BREAKING CHANGE: On the moment-select directive, remove the watch on the model as it might cause infinite loops.
 * Also remove loops as it is a lot for just two values.
-* Also update angular to 1.4.
+* Also update angular and angular-mocks to 1.4.
 
 # 4.0.0
 
