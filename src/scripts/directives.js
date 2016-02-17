@@ -350,23 +350,35 @@
 
                         var cast = (scope.useDuration) ? moment.duration : moment;
 
-                        scope.$watch('[hours, minutes]', function (newValues) {
-                            if (_.all(newValues, angular.isDefined)) {
-                                var values = _.object(_.map(group, function (key) {
-                                    return [key, scope[key] || 0];
-                                }));
+                        scope.$watchGroup(['hours', 'minutes'], function (newValues) {
+                            var hours = newValues[0];
+                            var minutes = newValues[1];
+                            var timeObject = {};
 
-                                scope.model = cast(values);
-
+                            if (angular.isDefined(hours)) {
+                                timeObject.hours = hours;
                             }
-                        }, true);
-                        scope.$watch('model', function (value) {
-                            if (angular.isDefined(value)) {
-                                value = cast(value);
-                                var values = _.object(_.map(group, function (key) {
-                                    return [key, value.get(key)];
-                                }));
-                                angular.extend(scope, values);
+                            if (angular.isDefined(minutes)) {
+                                timeObject.minutes = minutes;
+                            }
+                            scope.model = cast(timeObject);
+                        });
+
+                        var deregisterModelWatch = scope.$watch('model', function (value) {
+                            if (angular.isDefined(scope.model)) {
+                                value = cast(scope.model);
+                                var timeObject = {};
+                                var hours = group[0];
+                                var minutes = group[1];
+
+                                if (angular.isDefined(hours)) {
+                                    timeObject.hours = value.get(hours);
+                                }
+                                if (angular.isDefined(minutes)) {
+                                    timeObject.minutes = value.get(minutes);
+                                }
+                                angular.extend(scope, timeObject);
+                                deregisterModelWatch();
                             }
                         });
                     };

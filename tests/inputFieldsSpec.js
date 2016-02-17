@@ -424,8 +424,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(2)').attr('label')).toBe('0');
-                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(12)').attr('label')).toBe('10');
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(1)').attr('label')).toBe('0');
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(11)').attr('label')).toBe('10');
                 });
 
                 it('that can be trailed with 0s with pad-minutes attribute', function () {
@@ -435,8 +435,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(2)').attr('label')).toBe('00');
-                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(12)').attr('label')).toBe('10');
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(1)').attr('label')).toBe('00');
+                    expect($(compiledTemplate, 'select[ng-model="minutes"] option:nth-child(11)').attr('label')).toBe('10');
                 });
             });
 
@@ -504,8 +504,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('00');
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(12)').attr('label')).toBe('10');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(1)').attr('label')).toBe('00');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('10');
                 });
 
                 it('that are not trailed with 0s by default', function () {
@@ -515,8 +515,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('0');
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(12)').attr('label')).toBe('10');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(1)').attr('label')).toBe('0');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('10');
                 });
             });
 
