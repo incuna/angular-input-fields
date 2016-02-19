@@ -22,7 +22,8 @@
     "angular": "1.4",
     "venturocket-angular-slider": "~0.3",
     "angular-bind-html-compile": "~1.1",
-    "angular-gettext": "0.2.8"
+    "angular-gettext": "0.2.8",
+    "angular-input-fields": "~5.0.0"
   },
   "resolutions": {
     "angular": "1.4"

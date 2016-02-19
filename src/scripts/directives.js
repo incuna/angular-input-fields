@@ -3,7 +3,7 @@
 
     var module = angular.module('angular-input-fields', ['gettext']);
 
-    module.directive('singleChoiceInput', [
+    module.directive('aifSingleChoiceInput', [
         function () {
             return {
                 restrict: 'A',
@@ -19,7 +19,7 @@
         }
     ]);
 
-    module.directive('selectInput', [
+    module.directive('aifSelectInput', [
         function () {
             return {
                 restrict: 'A',
@@ -36,7 +36,7 @@
 
     // Renders a pair of select inputs, one for the groups and the other for the
     // selected group's choices.
-    module.directive('groupedSelectInput', [
+    module.directive('aifGroupedSelectInput', [
         'gettextCatalog',
         function (gettextCatalog) {
             return {
@@ -132,7 +132,7 @@
         }
     ]);
 
-    module.directive('radioInput', [
+    module.directive('aifRadioInput', [
         function () {
             return {
                 restrict: 'A',
@@ -155,7 +155,7 @@
         }
     ]);
 
-    module.directive('checkboxInput', [
+    module.directive('aifCheckboxInput', [
         function () {
             return {
                 restrict: 'A',
@@ -170,7 +170,7 @@
         }
     ]);
 
-    module.directive('booleanInput', [
+    module.directive('aifBooleanInput', [
         function () {
             return {
                 restrict: 'A',
@@ -197,7 +197,7 @@
         }
     ]);
 
-    module.directive('textInput', [
+    module.directive('aifTextInput', [
         function () {
             return {
                 restrict: 'A',
@@ -211,7 +211,7 @@
         }
     ]);
 
-    module.directive('numberInput', [
+    module.directive('aifNumberInput', [
         function () {
             return {
                 restrict: 'A',
@@ -225,7 +225,7 @@
         }
     ]);
 
-    module.directive('sliderInput', [
+    module.directive('aifSliderInput', [
         'gettextCatalog',
         function (gettextCatalog) {
             return {
@@ -262,7 +262,7 @@
         }
     ]);
 
-    module.directive('switchInput', [
+    module.directive('aifSwitchInput', [
         function () {
             return {
                 restrict: 'A',
@@ -293,7 +293,7 @@
         }
     ]);
 
-    module.filter('numberPadding', [
+    module.filter('aifNumberPadding', [
         function () {
             return _.memoize(function (input, numOfDigits) {
                 input = input.toString();
@@ -308,7 +308,7 @@
         }
     ]);
 
-    module.directive('momentSelect', [
+    module.directive('aifMomentSelect', [
             '$compile',
         function ($compile) {
             return {
