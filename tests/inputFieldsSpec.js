@@ -170,6 +170,21 @@
             });
         });
 
+        describe('radio input', function () {
+            it('should have value set from parent model', function () {
+                template = '<div aif-radio-input model="model"></div>';
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                // Set model after compiling
+                $scope.model = 2;
+
+                $rootScope.$digest();
+                expect(compiledTemplate.isolateScope().localModel.value).toBe(2);
+            });
+        });
+
         describe('switch input', function () {
 
             it('should generate a div.switch-wrapper with two btn-radio directives with correct values', function () {

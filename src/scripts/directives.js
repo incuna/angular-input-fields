@@ -143,10 +143,15 @@
                 },
                 templateUrl: 'templates/type/radio-input.html',
                 link: function (scope) {
-                    scope.localModel = {
-                        value: scope.model
-                    };
-
+                    scope.localModel = '';
+                    var modelWatchDeregister = scope.$watch('model', function (value) {
+                        if (angular.isDefined(value)) {
+                            scope.localModel = {
+                                value: scope.model
+                            };
+                            modelWatchDeregister();
+                        }
+                    });
                     scope.$watch('localModel.value', function (value) {
                         scope.model = value;
                     });
