@@ -2,6 +2,10 @@
 
 * BUGFIX: add a watch in radio-input to assign model value only when it's established
 
+# 6.0.1
+
+* Fix distributed files to use correct aif prefix instead of aip
+
 # 6.0.0
 
 * BREAKING CHANGE: Add prefix of aif to input types
