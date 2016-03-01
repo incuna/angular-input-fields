@@ -1,7 +1,11 @@
 (function (angular, _, moment) {
     'use strict';
 
-    var module = angular.module('angular-input-fields', ['gettext']);
+    var module = angular.module('angular-input-fields', [
+        'vr.directives.slider',
+        'angular-bind-html-compile',
+        'gettext'
+    ]);
 
     module.directive('aifSingleChoiceInput', [
         function () {
