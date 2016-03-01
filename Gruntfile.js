@@ -79,7 +79,7 @@ module.exports = function (grunt) {
         uglify: _.extend({
             options: {
                 compress: {
-                    drop_console: false
+                    drop_console: true
                 }
             }
         }, uglifyConfig),
