@@ -207,10 +207,10 @@
                 $rootScope.$digest();
 
                 expect($(compiledTemplate, 'div.switch-wrapper').length).toBe(1);
-                expect($(compiledTemplate, '[btn-radio]').length).toBe(2);
+                expect($(compiledTemplate, '[uib-btn-radio]').length).toBe(2);
 
-                expect($(compiledTemplate, '[btn-radio]:first-child').html()).toBe('Switch 1');
-                expect($(compiledTemplate, '[btn-radio]:nth-child(2)').html()).toBe('Switch 2');
+                expect($(compiledTemplate, '[uib-btn-radio]:first-child').html()).toBe('Switch 1');
+                expect($(compiledTemplate, '[uib-btn-radio]:nth-child(2)').html()).toBe('Switch 2');
 
             });
 
@@ -234,10 +234,10 @@
                 $rootScope.$digest();
 
                 expect($(compiledTemplate, 'div.switch-wrapper').length).toBe(1);
-                expect($(compiledTemplate, '[btn-radio]').length).toBe(2);
+                expect($(compiledTemplate, '[uib-btn-radio]').length).toBe(2);
 
-                expect($(compiledTemplate, '[btn-radio]:first-child').html()).toBe('Switch 1');
-                expect($(compiledTemplate, '[btn-radio]:nth-child(2)').html()).toBe('Switch 2');
+                expect($(compiledTemplate, '[uib-btn-radio]:first-child').html()).toBe('Switch 1');
+                expect($(compiledTemplate, '[uib-btn-radio]:nth-child(2)').html()).toBe('Switch 2');
 
             });
         });
