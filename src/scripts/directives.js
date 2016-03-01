@@ -158,6 +158,7 @@
                             scope.localModel = {
                                 value: scope.model
                             };
+                            // Deregister the watch to avoid having a loop with the $watch below
                             modelWatchDeregister();
                         }
                     });
