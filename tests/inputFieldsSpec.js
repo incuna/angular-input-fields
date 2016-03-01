@@ -170,6 +170,21 @@
             });
         });
 
+        describe('radio input', function () {
+            it('should have value set from parent model', function () {
+                template = '<div aif-radio-input model="model"></div>';
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                // Set model after compiling
+                $scope.model = 2;
+
+                $rootScope.$digest();
+                expect(compiledTemplate.isolateScope().localModel.value).toBe(2);
+            });
+        });
+
         describe('switch input', function () {
 
             it('should generate a div.switch-wrapper with two btn-radio directives with correct values', function () {
@@ -192,10 +207,10 @@
                 $rootScope.$digest();
 
                 expect($(compiledTemplate, 'div.switch-wrapper').length).toBe(1);
-                expect($(compiledTemplate, '[btn-radio]').length).toBe(2);
+                expect($(compiledTemplate, '[uib-btn-radio]').length).toBe(2);
 
-                expect($(compiledTemplate, '[btn-radio]:first-child').html()).toBe('Switch 1');
-                expect($(compiledTemplate, '[btn-radio]:nth-child(2)').html()).toBe('Switch 2');
+                expect($(compiledTemplate, '[uib-btn-radio]:first-child').html()).toBe('Switch 1');
+                expect($(compiledTemplate, '[uib-btn-radio]:nth-child(2)').html()).toBe('Switch 2');
 
             });
 
@@ -219,10 +234,10 @@
                 $rootScope.$digest();
 
                 expect($(compiledTemplate, 'div.switch-wrapper').length).toBe(1);
-                expect($(compiledTemplate, '[btn-radio]').length).toBe(2);
+                expect($(compiledTemplate, '[uib-btn-radio]').length).toBe(2);
 
-                expect($(compiledTemplate, '[btn-radio]:first-child').html()).toBe('Switch 1');
-                expect($(compiledTemplate, '[btn-radio]:nth-child(2)').html()).toBe('Switch 2');
+                expect($(compiledTemplate, '[uib-btn-radio]:first-child').html()).toBe('Switch 1');
+                expect($(compiledTemplate, '[uib-btn-radio]:nth-child(2)').html()).toBe('Switch 2');
 
             });
         });

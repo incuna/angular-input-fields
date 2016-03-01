@@ -1,4 +1,6 @@
 # Upcoming
+
+* BUGFIX: add a watch in radio-input to assign model value only when it's established
 * Add missing module dependencies for vr.slider and angular-bind-html-compile
 * Add style classes for grouped-select
 * Add angular-bootstrap bower dependency
