@@ -3,6 +3,7 @@
 
     var module = angular.module('angular-input-fields', [
         'vr.directives.slider',
+        'ui.bootstrap.buttons',
         'angular-bind-html-compile',
         'gettext'
     ]);
