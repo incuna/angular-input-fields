@@ -1,3 +1,8 @@
+# Upcoming
+* Add missing module dependencies for vr.slider and angular-bind-html-compile
+* Add style classes for grouped-select
+* Add angular-bootstrap bower dependency
+
 # 6.0.1
 
 * Fix distributed files to use correct aif prefix instead of aip
