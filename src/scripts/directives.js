@@ -78,6 +78,8 @@
                                     // Group with choices
 
                                     if (scope.emptyLabel && angular.isUndefined(getGroupChoice(item, ''))) {
+                                        // Disable linter checks for camelcase variable names since these come from
+                                        //  the django API which we have no control over.
                                         // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
                                         /* jshint camelcase: false */
 
@@ -100,6 +102,8 @@
                                 }
                             });
                             if (otherChoices.length) {
+                                // Disable linter checks for camelcase variable names since these come from
+                                //  the django API which we have no control over.
                                 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
                                 /* jshint camelcase: false */
                                 scope.groups.push({
