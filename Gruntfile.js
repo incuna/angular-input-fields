@@ -109,6 +109,8 @@ module.exports = function (grunt) {
                     '<%= config.lib %>/venturocket-angular-slider/build/angular-slider.js',
                     '<%= config.lib %>/angular-bind-html-compile/angular-bind-html-compile.js',
                     '<%= config.lib %>/angular-gettext/dist/angular-gettext.js',
+                    '<%= config.lib %>/angular-bootstrap/ui-bootstrap.min.js',
+                    '<%= config.lib %>/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
                     'src/**/*.js',
                     'dist/templates.js',
