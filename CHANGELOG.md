@@ -1,3 +1,8 @@
+# upcoming
+
+* Updating lodash to version 4.0.1
+
+
 # 6.0.2
 
 * BUGFIX: add a watch in radio-input to assign model value only when it's established
