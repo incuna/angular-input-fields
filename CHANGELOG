@@ -1,3 +1,7 @@
+# upcoming
+
+* Updating lodash to version 4.0.1
+
 # 5.0.0
 
 * BREAKING CHANGE: On the moment-select directive, remove the watch on the model as it might cause infinite loops.

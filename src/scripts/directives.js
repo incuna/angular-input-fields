@@ -55,7 +55,7 @@
                     // Returns undefined if no choice is found.
                     var getGroupChoice = function (group, value) {
                         if (angular.isDefined(group)) {
-                            return _.findWhere(group.choices, {
+                            return _.find(group.choices, {
                                 value: value
                             });
                         }
