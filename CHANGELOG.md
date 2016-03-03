@@ -1,4 +1,4 @@
-# upcoming
+# 7.0.1
 
 * Update grouped-select-input html file to use aif-select-input directive.
 
