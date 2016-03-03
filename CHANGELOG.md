@@ -2,6 +2,22 @@
 
 * Updating lodash to version 4.0.1
 
+
+# 6.0.2
+
+* BUGFIX: add a watch in radio-input to assign model value only when it's established
+* BUGFIX: Add missing module dependencies for vr.slider and angular-bind-html-compile
+* BUGFIX: Add style classes for grouped-select
+* BUGFIX: Add angular-bootstrap bower dependency
+
+# 6.0.1
+
+* Fix distributed files to use correct aif prefix instead of aip
+
+# 6.0.0
+
+* BREAKING CHANGE: Add prefix of aif to input types
+
 # 5.0.0
 
 * BREAKING CHANGE: On the moment-select directive, remove the watch on the model as it might cause infinite loops.

@@ -1,9 +1,14 @@
 (function (angular, _, moment) {
     'use strict';
 
-    var module = angular.module('angular-input-fields', ['gettext']);
+    var module = angular.module('angular-input-fields', [
+        'vr.directives.slider',
+        'ui.bootstrap.buttons',
+        'angular-bind-html-compile',
+        'gettext'
+    ]);
 
-    module.directive('singleChoiceInput', [
+    module.directive('aifSingleChoiceInput', [
         function () {
             return {
                 restrict: 'A',
@@ -19,7 +24,7 @@
         }
     ]);
 
-    module.directive('selectInput', [
+    module.directive('aifSelectInput', [
         function () {
             return {
                 restrict: 'A',
@@ -36,7 +41,7 @@
 
     // Renders a pair of select inputs, one for the groups and the other for the
     // selected group's choices.
-    module.directive('groupedSelectInput', [
+    module.directive('aifGroupedSelectInput', [
         'gettextCatalog',
         function (gettextCatalog) {
             return {
@@ -74,6 +79,8 @@
                                     // Group with choices
 
                                     if (scope.emptyLabel && angular.isUndefined(getGroupChoice(item, ''))) {
+                                        // Disable linter checks for camelcase variable names since these come from
+                                        //  the django API which we have no control over.
                                         // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
                                         /* jshint camelcase: false */
 
@@ -96,6 +103,8 @@
                                 }
                             });
                             if (otherChoices.length) {
+                                // Disable linter checks for camelcase variable names since these come from
+                                //  the django API which we have no control over.
                                 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
                                 /* jshint camelcase: false */
                                 scope.groups.push({
@@ -132,7 +141,7 @@
         }
     ]);
 
-    module.directive('radioInput', [
+    module.directive('aifRadioInput', [
         function () {
             return {
                 restrict: 'A',
@@ -143,10 +152,16 @@
                 },
                 templateUrl: 'templates/type/radio-input.html',
                 link: function (scope) {
-                    scope.localModel = {
-                        value: scope.model
-                    };
-
+                    scope.localModel = '';
+                    var modelWatchDeregister = scope.$watch('model', function (value) {
+                        if (angular.isDefined(value)) {
+                            scope.localModel = {
+                                value: scope.model
+                            };
+                            // Deregister the watch to avoid having a loop with the $watch below
+                            modelWatchDeregister();
+                        }
+                    });
                     scope.$watch('localModel.value', function (value) {
                         scope.model = value;
                     });
@@ -155,7 +170,7 @@
         }
     ]);
 
-    module.directive('checkboxInput', [
+    module.directive('aifCheckboxInput', [
         function () {
             return {
                 restrict: 'A',
@@ -170,7 +185,7 @@
         }
     ]);
 
-    module.directive('booleanInput', [
+    module.directive('aifBooleanInput', [
         function () {
             return {
                 restrict: 'A',
@@ -197,7 +212,7 @@
         }
     ]);
 
-    module.directive('textInput', [
+    module.directive('aifTextInput', [
         function () {
             return {
                 restrict: 'A',
@@ -211,7 +226,7 @@
         }
     ]);
 
-    module.directive('numberInput', [
+    module.directive('aifNumberInput', [
         function () {
             return {
                 restrict: 'A',
@@ -225,7 +240,7 @@
         }
     ]);
 
-    module.directive('sliderInput', [
+    module.directive('aifSliderInput', [
         'gettextCatalog',
         function (gettextCatalog) {
             return {
@@ -262,7 +277,7 @@
         }
     ]);
 
-    module.directive('switchInput', [
+    module.directive('aifSwitchInput', [
         function () {
             return {
                 restrict: 'A',
@@ -293,7 +308,7 @@
         }
     ]);
 
-    module.filter('numberPadding', [
+    module.filter('aifNumberPadding', [
         function () {
             return _.memoize(function (input, numOfDigits) {
                 input = input.toString();
@@ -308,7 +323,7 @@
         }
     ]);
 
-    module.directive('momentSelect', [
+    module.directive('aifMomentSelect', [
             '$compile',
         function ($compile) {
             return {

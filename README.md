@@ -22,4 +22,15 @@ angular.module('app', [
 
 * Please see source or tests to see what attributes are available for each field
 
+# Development
+
+* Before starting development on this module you will need to run `npm install`
 * To run tests in watch mode use `grunt karma:dev`. To run tests once only do `grunt test`
+
+# Release
+
+* Before releasing, we must compile the `dist/` folder from the source javascript and templates.
+* To do this, run `grunt dist-js`
+* Determine the new release number using Semver
+* Update `package.json`, `bower.json` and the changelog with the new version number
+* Git tag the repository with the new version number

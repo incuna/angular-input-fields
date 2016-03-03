@@ -39,7 +39,7 @@
 
                 $scope.questionName = 'question';
 
-                template = '<div single-choice-input choices="choices"></div>';
+                template = '<div aif-single-choice-input choices="choices"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -52,7 +52,7 @@
 
         describe('number input', function () {
             it('should compile and have a number input element', function () {
-                template = '<div number-input></div>';
+                template = '<div aif-number-input></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -64,7 +64,7 @@
 
         describe('text input', function () {
             it('should compile and have a text input element', function () {
-                template = '<div text-input></div>';
+                template = '<div aif-text-input></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -75,7 +75,7 @@
 
         describe('slider input', function () {
             it('should have a slider', function () {
-                template = '<div slider-input model="any"></div>';
+                template = '<div aif-slider-input model="any"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -84,7 +84,7 @@
             });
 
             it('should have default labels for lowest and highest values', function () {
-                template = '<div slider-input model="any"></div>';
+                template = '<div aif-slider-input model="any"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -95,7 +95,7 @@
             });
 
             it('should have a default value of ceiling', function () {
-                template = '<div slider-input model="any"></div>';
+                template = '<div aif-slider-input model="any"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -104,7 +104,7 @@
             });
 
             it('should have a default I=O translate-fn', function () {
-                template = '<div slider-input model="any"></div>';
+                template = '<div aif-slider-input model="any"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -121,7 +121,7 @@
                     return input * 2;
                 };
 
-                template = '<div slider-input model="any" translate-fn="translateFunction"></div>';
+                template = '<div aif-slider-input model="any" translate-fn="translateFunction"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -134,7 +134,7 @@
             });
 
             it('should accept a className attribute and attach it as a class', function () {
-                template = '<div slider-input model="any" class-name="someClass"></div>';
+                template = '<div aif-slider-input model="any" class-name="someClass"></div>';
                 compiledTemplate = compile(template);
                 $rootScope.$digest();
                 expect($(compiledTemplate, '.slider-wrapper > div').attr('class')).toContain('someClass');
@@ -142,7 +142,7 @@
             });
 
             it('should have changable labels for lowest and highest values', function () {
-                template = '<div slider-input model="any" slider-low-label="No problem" slider-high-label="Worst problem"></div>';
+                template = '<div aif-slider-input model="any" slider-low-label="No problem" slider-high-label="Worst problem"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -159,7 +159,7 @@
                     question: true
                 };
 
-                template = '<div boolean-input model="model"></div>';
+                template = '<div aif-boolean-input model="model"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -167,6 +167,21 @@
                 expect($(compiledTemplate, 'input').length).toBe(2);
                 expect($(compiledTemplate, 'option').length).toBe(3);
 
+            });
+        });
+
+        describe('radio input', function () {
+            it('should have value set from parent model', function () {
+                template = '<div aif-radio-input model="model"></div>';
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                // Set model after compiling
+                $scope.model = 2;
+
+                $rootScope.$digest();
+                expect(compiledTemplate.isolateScope().localModel.value).toBe(2);
             });
         });
 
@@ -186,16 +201,16 @@
                 ];
                 // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
-                template = '<div><div switch-input choices="switchValues"></div></div>';
+                template = '<div><div aif-switch-input choices="switchValues"></div></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
 
                 expect($(compiledTemplate, 'div.switch-wrapper').length).toBe(1);
-                expect($(compiledTemplate, '[btn-radio]').length).toBe(2);
+                expect($(compiledTemplate, '[uib-btn-radio]').length).toBe(2);
 
-                expect($(compiledTemplate, '[btn-radio]:first-child').html()).toBe('Switch 1');
-                expect($(compiledTemplate, '[btn-radio]:nth-child(2)').html()).toBe('Switch 2');
+                expect($(compiledTemplate, '[uib-btn-radio]:first-child').html()).toBe('Switch 1');
+                expect($(compiledTemplate, '[uib-btn-radio]:nth-child(2)').html()).toBe('Switch 2');
 
             });
 
@@ -213,16 +228,16 @@
                 ];
                 // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
 
-                template = '<div><div switch-input model="any" choices="switchValues"></div></div>';
+                template = '<div><div aif-switch-input model="any" choices="switchValues"></div></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
 
                 expect($(compiledTemplate, 'div.switch-wrapper').length).toBe(1);
-                expect($(compiledTemplate, '[btn-radio]').length).toBe(2);
+                expect($(compiledTemplate, '[uib-btn-radio]').length).toBe(2);
 
-                expect($(compiledTemplate, '[btn-radio]:first-child').html()).toBe('Switch 1');
-                expect($(compiledTemplate, '[btn-radio]:nth-child(2)').html()).toBe('Switch 2');
+                expect($(compiledTemplate, '[uib-btn-radio]:first-child').html()).toBe('Switch 1');
+                expect($(compiledTemplate, '[uib-btn-radio]:nth-child(2)').html()).toBe('Switch 2');
 
             });
         });
@@ -231,7 +246,7 @@
             it('should compile and have a checkbox input element and a label', function () {
                 $scope.label = 'A label';
 
-                template = '<div checkbox-input label="label"></div>';
+                template = '<div aif-checkbox-input label="label"></div>';
                 compiledTemplate = compile(template);
 
                 $rootScope.$digest();
@@ -245,7 +260,7 @@
         describe('moment-select ', function () {
             it('should compile and have 2 select elements', function () {
 
-                template = '<div moment-select model="moment" ></div>';
+                template = '<div aif-moment-select model="moment" ></div>';
 
                 compiledTemplate = compile(template);
 
@@ -256,7 +271,7 @@
 
             it('should be disabled if `disable` is set', function () {
 
-                template = '<div moment-select model="moment" disable="true" ></div>';
+                template = '<div aif-moment-select model="moment" disable="true" ></div>';
 
                 compiledTemplate = compile(template);
 
@@ -271,7 +286,7 @@
                     hours: 2,
                     minutes: 5
                 });
-                template = '<div moment-select model="duration" use-duration="true"></div>';
+                template = '<div aif-moment-select model="duration" use-duration="true"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -285,7 +300,7 @@
             it('should set hour and minute based on the model of duration string', function () {
 
                 $scope.duration = '01:30:00';
-                template = '<div moment-select model="duration" use-duration="true"></div>';
+                template = '<div aif-moment-select model="duration" use-duration="true"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -300,7 +315,7 @@
             it('should set hour and minute based on the model of date string', function () {
 
                 $scope.date = '2013-02-08 09:30:26';
-                template = '<div moment-select model="date" ></div>';
+                template = '<div aif-moment-select model="date" ></div>';
 
                 compiledTemplate = compile(template);
 
@@ -314,7 +329,7 @@
             it('should set hour and minute based on the model of date type', function () {
 
                 $scope.date = moment('2013-02-08 09:30:26');
-                template = '<div moment-select model="date" ></div>';
+                template = '<div aif-moment-select model="date" ></div>';
 
                 compiledTemplate = compile(template);
 
@@ -327,7 +342,7 @@
 
             it('should return a duration object with hours and minutes', function () {
                 $scope.duration = {};
-                template = '<div moment-select model="duration" use-duration="true"></div>';
+                template = '<div aif-moment-select model="duration" use-duration="true"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -344,7 +359,7 @@
 
             it('should return a moment object with hours and minutes', function () {
                 $scope.date = {};
-                template = '<div moment-select model="date"></div>';
+                template = '<div aif-moment-select model="date"></div>';
 
                 compiledTemplate = compile(template);
 
@@ -362,7 +377,7 @@
             describe('should have minute choices ', function () {
                 it('that default to 0 .. 59', function () {
 
-                    template = '<div moment-select model="moment" ></div>';
+                    template = '<div aif-moment-select model="moment" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -377,7 +392,7 @@
 
                 it('that depended on minute-step', function () {
 
-                    template = '<div moment-select model="moment" minute-step="10" ></div>';
+                    template = '<div aif-moment-select model="moment" minute-step="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -391,7 +406,7 @@
 
                 it('that depended on minute-min', function () {
 
-                    template = '<div moment-select model="moment" minute-min="10" ></div>';
+                    template = '<div aif-moment-select model="moment" minute-min="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -405,7 +420,7 @@
 
                 it('that depended on minute-max', function () {
 
-                    template = '<div moment-select model="moment" minute-max="10" ></div>';
+                    template = '<div aif-moment-select model="moment" minute-max="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -418,7 +433,7 @@
                 });
 
                 it('that are not trailed with 0s by default', function () {
-                    template = '<div moment-select model="moment" hour-max="12"></div>';
+                    template = '<div aif-moment-select model="moment" hour-max="12"></div>';
 
                     compiledTemplate = compile(template);
 
@@ -429,7 +444,7 @@
                 });
 
                 it('that can be trailed with 0s with pad-minutes attribute', function () {
-                    template = '<div moment-select model="moment" hour-max="12" minutes-len="2"></div>';
+                    template = '<div aif-moment-select model="moment" hour-max="12" minutes-len="2"></div>';
 
                     compiledTemplate = compile(template);
 
@@ -443,7 +458,7 @@
             describe('should have hour choices ', function () {
                 it('that default to 0 .. 24', function () {
 
-                    template = '<div moment-select model="moment" ></div>';
+                    template = '<div aif-moment-select model="moment" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -457,7 +472,7 @@
 
                 it('that depended on hour-step', function () {
 
-                    template = '<div moment-select model="moment" hour-step="2" ></div>';
+                    template = '<div aif-moment-select model="moment" hour-step="2" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -471,7 +486,7 @@
 
                 it('that depended on hour-min', function () {
 
-                    template = '<div moment-select model="moment" hour-min="10" ></div>';
+                    template = '<div aif-moment-select model="moment" hour-min="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -485,7 +500,7 @@
 
                 it('that depended on hour-max', function () {
 
-                    template = '<div moment-select model="moment" hour-max="10" ></div>';
+                    template = '<div aif-moment-select model="moment" hour-max="10" ></div>';
 
                     compiledTemplate = compile(template);
 
@@ -498,7 +513,7 @@
                 });
 
                 it('that can be trailed with 0s with pad-hours attribute', function () {
-                    template = '<div moment-select model="moment" hour-max="12" hours-len="2"></div>';
+                    template = '<div aif-moment-select model="moment" hour-max="12" hours-len="2"></div>';
 
                     compiledTemplate = compile(template);
 
@@ -509,7 +524,7 @@
                 });
 
                 it('that are not trailed with 0s by default', function () {
-                    template = '<div moment-select model="moment" hour-max="12"></div>';
+                    template = '<div aif-moment-select model="moment" hour-max="12"></div>';
 
                     compiledTemplate = compile(template);
 
@@ -526,8 +541,8 @@
             var numberPaddingFilter;
 
             beforeEach(function () {
-                inject(function (_numberPaddingFilter_) {
-                    numberPaddingFilter = _numberPaddingFilter_;
+                inject(function (_aifNumberPaddingFilter_) {
+                    numberPaddingFilter = _aifNumberPaddingFilter_;
                 });
             });
 
