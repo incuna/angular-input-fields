@@ -1,7 +1,10 @@
+# upcoming
+
+* Update grouped-select-input html file to use aif-select-input directive.
+
 # 7.0.0
 
 * BREAKING CHANGE: Updating lodash to version 4.0.1
-
 
 # 6.0.2
 
