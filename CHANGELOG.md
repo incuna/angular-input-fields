@@ -1,6 +1,6 @@
-# upcoming
+# 7.0.0
 
-* Updating lodash to version 4.0.1
+* BREAKING CHANGE: Updating lodash to version 4.0.1
 
 
 # 6.0.2
