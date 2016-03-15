@@ -2,6 +2,8 @@
 
 # angular-input-fields
 
+This project uses ES6 template strings in `Gruntfile.js`, so node `>=4.x` is required
+
 # Installation
 `bower install angular-input-fields --save`
 
