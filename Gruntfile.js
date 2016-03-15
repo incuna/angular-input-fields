@@ -18,28 +18,29 @@ module.exports = function (grunt) {
 
     concatConfig.target = {
         src: [
-            'src/scripts/directives.js'
+            'src/scripts/**/directives.js',
+            'src/scripts/**/templates.js',
+            'src/scripts/init.js'
         ],
-        dest: 'dist/scripts.js'
-
+        dest: 'dist/angular-input-fields.js'
     };
 
-    ngtemplatesConfig.target = {
-        cwd: 'src',
-        src: 'templates/type/*.html',
-        dest: 'dist/templates.js',
-        options: {
-            module: 'angular-input-fields'
-        }
-    };
+    var modules = fs.readdirSync('src/templates/aif');
+    _.each(modules, function (module) {
+        ngtemplatesConfig[module] = {
+            cwd: 'src',
+            src: `templates/aif/${module}/**/*.html`,
+            dest: `src/scripts/${module}/templates.js`,
+            options: {
+                module: `aif-${module}`
+            }
+        };
+    });
 
     uglifyConfig.target = {
-        files: [{
-            expand: true,
-            cwd: 'dist/',
-            src: '*.js',
-            dest: 'dist/'
-        }]
+        files: {
+            'dist/angular-input-fields.min.js': 'dist/angular-input-fields.js'
+        }
     };
 
     grunt.initConfig({
@@ -57,6 +58,7 @@ module.exports = function (grunt) {
             lib: 'bower_components',
             lintFiles: [
                 'src/**/*.js',
+                '!src/**/templates.js',
                 'tests/**/*.js'
             ]
         },
@@ -113,7 +115,6 @@ module.exports = function (grunt) {
                     '<%= config.lib %>/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
                     'src/**/*.js',
-                    'dist/templates.js',
                     'tests/**/*.js'
                 ],
                 frameworks: ['jasmine'],

@@ -1,3 +1,9 @@
+# upcoming
+
+* Register each directive in a separate module to allow for importing only selected directives
+* BREAKING CHANGE: Merge `templates.js` and `scripts.js` into `angular-input-fields.js` and `angular-input-fields.min.js`
+* BREAKING CHANGE: directive templates namespaced to `aif`, each moved to a separate folder
+
 # 7.0.1
 
 * Update grouped-select-input html file to use aif-select-input directive.
