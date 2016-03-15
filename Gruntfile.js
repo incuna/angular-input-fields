@@ -21,7 +21,7 @@ module.exports = function (grunt) {
             'src/scripts/**/directives.js',
             'src/scripts/**/templates.js'
         ],
-        dest: 'dist/scripts.js'
+        dest: 'dist/angular-input-fields.js'
 
     };
 
@@ -39,12 +39,9 @@ module.exports = function (grunt) {
     });
 
     uglifyConfig.target = {
-        files: [{
-            expand: true,
-            cwd: 'dist/',
-            src: '*.js',
-            dest: 'dist/'
-        }]
+        files: {
+            'dist/angular-input-fields.min.js': 'dist/angular-input-fields.js'
+        }
     };
 
     grunt.initConfig({
