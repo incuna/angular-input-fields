@@ -27,7 +27,6 @@ module.exports = function (grunt) {
 
     var modules = fs.readdirSync('src/templates/aif');
     _.each(modules, function (module) {
-        var modulePath = 'src/templates/aif/' + module;
         ngtemplatesConfig[module] = {
             cwd: 'src',
             src: `templates/aif/${module}/**/*.html`,
