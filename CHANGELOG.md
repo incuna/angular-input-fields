@@ -1,3 +1,7 @@
+# upcoming
+
+* Register each directive in a separate module to allow for importing only selected directives
+
 # 7.0.1
 
 * Update grouped-select-input html file to use aif-select-input directive.

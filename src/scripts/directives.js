@@ -1,14 +1,22 @@
 (function (angular, _, moment) {
     'use strict';
 
-    var module = angular.module('angular-input-fields', [
-        'vr.directives.slider',
-        'ui.bootstrap.buttons',
-        'angular-bind-html-compile',
-        'gettext'
+    angular.module('angular-input-fields', [
+        'aif-single-choice-input',
+        'aif-grouped-select-input',
+        'aif-checkbox-input',
+        'aif-boolean-input',
+        'aif-text-input',
+        'aif-number-input',
+        'aif-slider-input',
+        'aif-switch-input',
+        'aif-moment-select'
     ]);
 
-    module.directive('aifSingleChoiceInput', [
+    angular.module('aif-single-choice-input', [
+        'aif-select-input',
+        'aif-radio-input'
+    ]).directive('aifSingleChoiceInput', [
         function () {
             return {
                 restrict: 'A',
@@ -24,7 +32,7 @@
         }
     ]);
 
-    module.directive('aifSelectInput', [
+    angular.module('aif-select-input', []).directive('aifSelectInput', [
         function () {
             return {
                 restrict: 'A',
@@ -41,7 +49,10 @@
 
     // Renders a pair of select inputs, one for the groups and the other for the
     // selected group's choices.
-    module.directive('aifGroupedSelectInput', [
+    angular.module('aif-grouped-select-input', [
+        'aif-select-input',
+        'gettext'
+    ]).directive('aifGroupedSelectInput', [
         'gettextCatalog',
         function (gettextCatalog) {
             return {
@@ -141,7 +152,7 @@
         }
     ]);
 
-    module.directive('aifRadioInput', [
+    angular.module('aif-radio-input', []).directive('aifRadioInput', [
         function () {
             return {
                 restrict: 'A',
@@ -170,7 +181,7 @@
         }
     ]);
 
-    module.directive('aifCheckboxInput', [
+    angular.module('aif-checkbox-input', ['angular-bind-html-compile']).directive('aifCheckboxInput', [
         function () {
             return {
                 restrict: 'A',
@@ -185,7 +196,7 @@
         }
     ]);
 
-    module.directive('aifBooleanInput', [
+    angular.module('aif-boolean-input', []).directive('aifBooleanInput', [
         function () {
             return {
                 restrict: 'A',
@@ -212,7 +223,7 @@
         }
     ]);
 
-    module.directive('aifTextInput', [
+    angular.module('aif-text-input', []).directive('aifTextInput', [
         function () {
             return {
                 restrict: 'A',
@@ -226,7 +237,7 @@
         }
     ]);
 
-    module.directive('aifNumberInput', [
+    angular.module('aif-number-input', []).directive('aifNumberInput', [
         function () {
             return {
                 restrict: 'A',
@@ -240,7 +251,10 @@
         }
     ]);
 
-    module.directive('aifSliderInput', [
+    angular.module('aif-slider-input', [
+        'vr.directives.slider',
+        'gettext'
+    ]).directive('aifSliderInput', [
         'gettextCatalog',
         function (gettextCatalog) {
             return {
@@ -277,7 +291,9 @@
         }
     ]);
 
-    module.directive('aifSwitchInput', [
+    angular.module('aif-switch-input', [
+        'ui.bootstrap.buttons'
+    ]).directive('aifSwitchInput', [
         function () {
             return {
                 restrict: 'A',
@@ -308,7 +324,7 @@
         }
     ]);
 
-    module.filter('aifNumberPadding', [
+    angular.module('aif-number-padding-filter', []).filter('aifNumberPadding', [
         function () {
             return _.memoize(function (input, numOfDigits) {
                 input = input.toString();
@@ -323,7 +339,9 @@
         }
     ]);
 
-    module.directive('aifMomentSelect', [
+    angular.module('aif-moment-select', [
+        'aif-number-padding-filter'
+    ]).directive('aifMomentSelect', [
             '$compile',
         function ($compile) {
             return {
