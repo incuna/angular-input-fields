@@ -25,11 +25,10 @@ module.exports = function (grunt) {
 
     };
 
-    var ngtemplatesConfig = {};
     var modules = fs.readdirSync('src/templates/aif');
     _.each(modules, function (module) {
         var modulePath = 'src/templates/aif/' + module;
-        templatesConfig['src/templates/aif-' + module] = {
+        ngtemplatesConfig['src/templates/aif-' + module] = {
             cwd: 'src',
             src: `templates/aif/${module}/**/*.html`,
             dest: `src/scripts/${module}/templates.js`,
@@ -63,6 +62,7 @@ module.exports = function (grunt) {
             lib: 'bower_components',
             lintFiles: [
                 'src/**/*.js',
+                '!src/**/templates.js',
                 'tests/**/*.js'
             ]
         },
@@ -119,7 +119,6 @@ module.exports = function (grunt) {
                     '<%= config.lib %>/angular-bootstrap/ui-bootstrap-tpls.min.js',
 
                     'src/**/*.js',
-                    'dist/templates.js',
                     'tests/**/*.js'
                 ],
                 frameworks: ['jasmine'],
