@@ -1,6 +1,8 @@
 # upcoming
 
 * Register each directive in a separate module to allow for importing only selected directives
+* Merge `templates.js` dist file into `scripts.js`
+* BREAKING CHANGE: directive templates namespaced to `aif`, each moved to a separate folder
 
 # 7.0.1
 
