@@ -19,10 +19,10 @@ module.exports = function (grunt) {
     concatConfig.target = {
         src: [
             'src/scripts/**/directives.js',
-            'src/scripts/**/templates.js'
+            'src/scripts/**/templates.js',
+            'src/scripts/init.js'
         ],
         dest: 'dist/angular-input-fields.js'
-
     };
 
     var modules = fs.readdirSync('src/templates/aif');
