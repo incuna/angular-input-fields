@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         src: 'templates/type/*.html',
         dest: 'dist/templates.js',
         options: {
-            module: 'angular-input-fields'
+            module: 'angular-input-fields.templates'
         }
     };
 
