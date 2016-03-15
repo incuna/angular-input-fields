@@ -18,20 +18,26 @@ module.exports = function (grunt) {
 
     concatConfig.target = {
         src: [
-            'src/scripts/directives.js'
+            'src/scripts/**/directives.js',
+            'src/scripts/**/templates.js'
         ],
         dest: 'dist/scripts.js'
 
     };
 
-    ngtemplatesConfig.target = {
-        cwd: 'src',
-        src: 'templates/type/*.html',
-        dest: 'dist/templates.js',
-        options: {
-            module: 'angular-input-fields.templates'
-        }
-    };
+    var ngtemplatesConfig = {};
+    var modules = fs.readdirSync('src/templates/aif');
+    _.each(modules, function (module) {
+        var modulePath = 'src/templates/aif/' + module;
+        templatesConfig['src/templates/aif-' + module] = {
+            cwd: 'src',
+            src: `templates/aif/${module}/**/*.html`,
+            dest: `src/scripts/${module}/templates.js`,
+            options: {
+                module: `aif-${module}`
+            }
+        };
+    });
 
     uglifyConfig.target = {
         files: [{
