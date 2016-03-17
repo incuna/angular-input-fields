@@ -1,3 +1,7 @@
+# upcoming
+
+BUGFIX: in radio-input initialise the localModel as an object to not break the binding with the parent model
+
 # 8.0.0
 
 * Register each directive in a separate module to allow for importing only selected directives
