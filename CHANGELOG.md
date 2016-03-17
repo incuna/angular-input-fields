@@ -1,4 +1,4 @@
-# upcoming
+# 8.0.1
 
 BUGFIX: in radio-input initialise the localModel as an object to not break the binding with the parent model
 
