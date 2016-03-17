@@ -184,7 +184,7 @@
                 expect(compiledTemplate.isolateScope().localModel.value).toBe(2);
             });
 
-            it('should set the value on the parent mode', function () {
+            it('should set the value on the parent model', function () {
                 $scope.model = '';
 
                 template = '<div aif-radio-input model="model"></div>';
