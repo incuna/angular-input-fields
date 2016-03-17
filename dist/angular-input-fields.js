@@ -295,7 +295,7 @@
                 },
                 templateUrl: 'templates/aif/radio-input/template.html',
                 link: function (scope) {
-                    scope.localModel = '';
+                    scope.localModel = {};
                     var modelWatchDeregister = scope.$watch('model', function (value) {
                         if (angular.isDefined(value)) {
                             scope.localModel = {

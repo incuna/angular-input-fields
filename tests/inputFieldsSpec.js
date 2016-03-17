@@ -183,6 +183,22 @@
                 $rootScope.$digest();
                 expect(compiledTemplate.isolateScope().localModel.value).toBe(2);
             });
+
+            it('should set the value on the parent model', function () {
+                $scope.model = '';
+
+                template = '<div aif-radio-input model="model"></div>';
+                compiledTemplate = compile(template);
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+
+                // Set model after compiling
+                isolated.localModel.value = 'test';
+
+                $rootScope.$digest();
+                expect($scope.model).toBe('test');
+            });
         });
 
         describe('switch input', function () {
