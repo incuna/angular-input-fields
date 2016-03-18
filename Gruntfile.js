@@ -64,11 +64,11 @@ module.exports = function (grunt) {
         },
         watch: {
             templates: {
-                files: 'src/templates/**',
+                files: 'src/templates/**/*.html',
                 tasks: 'ngtemplates'
             },
             js: {
-                files: 'src/scripts/*.js',
+                files: 'src/scripts/**/*.js',
                 tasks: 'dist-js'
             }
         },
