@@ -1,6 +1,10 @@
+# Upcoming
+
+* BUGFIX: make `disable` attribute passthrough single-choice-input into the radio and select inputs
+
 # 8.0.1
 
-BUGFIX: in radio-input initialise the localModel as an object to not break the binding with the parent model
+* BUGFIX: in radio-input initialise the localModel as an object to not break the binding with the parent model
 
 # 8.0.0
 
