@@ -1,4 +1,6 @@
 /* global angular, describe, beforeEach, module, inject, it, expect, _, moment */
+/* jshint es3: false, esnext: true */
+/* jscs:enable esnext */
 
 (function () {
     'use strict';
@@ -274,6 +276,19 @@
         });
 
         describe('moment-select ', function () {
+            beforeEach(function () {
+                $scope.moment = '';
+            });
+
+            it('should throw if model is not defined', function () {
+                template = '<div aif-moment-select model="nonExistent" ></div>';
+                compiledTemplate = compile(template);
+
+                expect(() => {
+                    $rootScope.$digest();
+                }).toThrow(new Error('aif-moment-select: model is not defined'));
+            });
+
             it('should compile and have 2 select elements', function () {
 
                 template = '<div aif-moment-select model="moment" ></div>';
@@ -326,6 +341,23 @@
                 expect(isolated.hours).toBe(1);
                 expect(isolated.minutes).toBe(30);
                 expect($scope.duration.toString()).toBe('PT1H30M');
+            });
+
+            it('should watch the model and set hour and minute accordingly', function () {
+                $scope.duration = '01:30:00';
+                template = '<div aif-moment-select model="duration" use-duration="true"></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+
+                $scope.duration = '00:00:00';
+
+                $rootScope.$digest();
+                expect(isolated.hours).toBe(0);
+                expect(isolated.minutes).toBe(0);
             });
 
             it('should set hour and minute based on the model of date string', function () {
