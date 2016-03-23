@@ -1,4 +1,4 @@
-# Upcoming
+# 8.0.2
 
 * BUGFIX: make `disable` attribute passthrough single-choice-input into the radio and select inputs
 
