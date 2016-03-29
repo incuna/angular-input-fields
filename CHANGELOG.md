@@ -1,4 +1,4 @@
-# upcoming
+# 8.0.3
 
 * BUGFIX: allow to constantly update hours and minutes in `moment-select`. `$watchGroup` didn't seem to return correct values, altough it was triggered correctly.
 
