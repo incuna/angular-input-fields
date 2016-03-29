@@ -471,6 +471,23 @@
                 });
             });
 
+            it('should watch the model and set hour and minute accordingly', function () {
+                 $scope.duration = '01:30:00';
+                 template = '<div aif-moment-select model="duration" use-duration="true"></div>';
+
+                 compiledTemplate = compile(template);
+
+                 $rootScope.$digest();
+
+                 var isolated = compiledTemplate.isolateScope();
+
+                 $scope.duration = '00:00:00';
+
+                 $rootScope.$digest();
+                 expect(isolated.hours).toBe(0);
+                 expect(isolated.minutes).toBe(0);
+             });
+
             describe('should have hour choices ', function () {
                 it('that default to 0 .. 24', function () {
 

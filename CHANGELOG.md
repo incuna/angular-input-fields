@@ -1,3 +1,7 @@
+# upcoming
+
+* BUGFIX: allow to constantly update hours and minutes in `moment-select`. `$watchGroup` didn't seem to return correct values, altough it was triggered correctly.
+
 # 8.0.2
 
 * BUGFIX: make `disable` attribute passthrough single-choice-input into the radio and select inputs
