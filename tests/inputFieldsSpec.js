@@ -603,5 +603,20 @@
 
         });
 
+        describe('addSuffix filter', function () {
+            var addSuffixFilter;
+
+            beforeEach(function () {
+                inject(function (_aifAddSuffixFilter_) {
+                    addSuffixFilter = _aifAddSuffixFilter_;
+                });
+            });
+
+            it('should add a specifed suffix', function () {
+                expect(addSuffixFilter('00', ' h')).toBe('00 h');
+                expect(addSuffixFilter('00', ' m')).toBe('00 m');
+            });
+        });
+
     });
 }());
