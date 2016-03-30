@@ -16,8 +16,22 @@
         }
     ]);
 
+    angular.module('aif-add-suffix-filter', []).filter('aifAddSuffix', [
+        function () {
+            return _.memoize(function (input, suffix) {
+                if (angular.isUndefined(suffix)) {
+                    return input;
+                }
+                return input + '' + suffix;
+            }, function (input, suffix) {
+                return input + '' + suffix;
+            });
+        }
+    ]);
+
     angular.module('aif-moment-select', [
-        'aif-number-padding-filter'
+        'aif-number-padding-filter',
+        'aif-add-suffix-filter'
     ]).directive('aifMomentSelect', [
             '$compile',
         function ($compile) {
@@ -34,7 +48,9 @@
                     minuteStep: '@',
                     useDuration: '=',
                     hoursLen: '@',
-                    minutesLen: '@'
+                    minutesLen: '@',
+                    hoursSuffix: '@',
+                    minutesSuffix: '@'
                 },
                 templateUrl: 'templates/aif/moment-select/template.html',
                 compile: function (element, attrs) {

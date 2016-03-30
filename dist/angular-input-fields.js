@@ -179,8 +179,22 @@
         }
     ]);
 
+    angular.module('aif-add-suffix-filter', []).filter('aifAddSuffix', [
+        function () {
+            return _.memoize(function (input, suffix) {
+                if (angular.isUndefined(suffix)) {
+                    return input;
+                }
+                return input + '' + suffix;
+            }, function (input, suffix) {
+                return input + '' + suffix;
+            });
+        }
+    ]);
+
     angular.module('aif-moment-select', [
-        'aif-number-padding-filter'
+        'aif-number-padding-filter',
+        'aif-add-suffix-filter'
     ]).directive('aifMomentSelect', [
             '$compile',
         function ($compile) {
@@ -197,7 +211,9 @@
                     minuteStep: '@',
                     useDuration: '=',
                     hoursLen: '@',
-                    minutesLen: '@'
+                    minutesLen: '@',
+                    hoursSuffix: '@',
+                    minutesSuffix: '@'
                 },
                 templateUrl: 'templates/aif/moment-select/template.html',
                 compile: function (element, attrs) {
@@ -224,8 +240,8 @@
                         var cast = (scope.useDuration) ? moment.duration : moment;
 
                         scope.$watchGroup(['hours', 'minutes'], function (newValues) {
-                            var hours = newValues[0];
-                            var minutes = newValues[1];
+                            var hours = scope.hours;
+                            var minutes = scope.minutes;
                             var timeObject = {};
 
                             if (angular.isDefined(hours)) {
@@ -237,7 +253,7 @@
                             scope.model = cast(timeObject);
                         });
 
-                        var deregisterModelWatch = scope.$watch('model', function (value) {
+                        scope.$watch('model', function (value) {
                             if (angular.isDefined(scope.model)) {
                                 value = cast(scope.model);
                                 var timeObject = {};
@@ -251,7 +267,6 @@
                                     timeObject.minutes = value.get(minutes);
                                 }
                                 angular.extend(scope, timeObject);
-                                deregisterModelWatch();
                             }
                         });
                     };
@@ -490,7 +505,7 @@ angular.module('aif-moment-select').run(['$templateCache', function($templateCac
   'use strict';
 
   $templateCache.put('templates/aif/moment-select/template.html',
-    "<div class=duration-select-wrapper><table><tbody><tr><td><select class=select ng-model=hours ng-disabled=disable ng-options=\"hour as (hour|aifNumberPadding:hoursLen) for hour in hourChoices\"></select></td><td><select class=select ng-model=minutes ng-disabled=disable ng-options=\"minute as (minute|aifNumberPadding:minutesLen) for minute in minuteChoices\"></select></td></tr></tbody></table></div>"
+    "<div class=duration-select-wrapper><table><tbody><tr><td><select class=select ng-model=hours ng-disabled=disable ng-options=\"hour as (hour|aifNumberPadding:hoursLen|aifAddSuffix:hoursSuffix) for hour in hourChoices\"></select></td><td><select class=select ng-model=minutes ng-disabled=disable ng-options=\"minute as (minute|aifNumberPadding:minutesLen|aifAddSuffix:minutesSuffix) for minute in minuteChoices\"></select></td></tr></tbody></table></div>"
   );
 
 }]);
