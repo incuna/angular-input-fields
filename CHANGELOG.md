@@ -1,4 +1,4 @@
-# upcoming
+# 8.1.0
 
 * FEATURE: add `hours-suffix` and `minutes-suffix` attributes to `aif-moment-select` for display
 
