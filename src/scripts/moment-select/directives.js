@@ -20,7 +20,7 @@
         function () {
             return _.memoize(function (input, suffix) {
                 if (angular.isUndefined(suffix)) {
-                    suffix = '';
+                    return input;
                 }
                 return input + '' + suffix;
             }, function (input, suffix) {
