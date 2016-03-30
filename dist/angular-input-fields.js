@@ -181,12 +181,14 @@
 
     angular.module('aif-add-suffix-filter', []).filter('aifAddSuffix', [
         function () {
-            return function (input, suffix) {
+            return _.memoize(function (input, suffix) {
                 if (angular.isUndefined(suffix)) {
                     suffix = '';
                 }
                 return input + '' + suffix;
-            };
+            }, function (input, suffix) {
+                return input + '' + suffix;
+            });
         }
     ]);
 
