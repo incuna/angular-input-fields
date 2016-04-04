@@ -390,6 +390,26 @@
                 expect($scope.date.toString()).toContain('09:30:00');
             });
 
+            it('should not change the dates in the date object, only hours and minutes', function () {
+                $scope.date = moment('2016-03-12');
+
+                template = '<div aif-moment-select model="date"></div>';
+
+                compiledTemplate = compile(template);
+
+                $rootScope.$digest();
+
+                var isolated = compiledTemplate.isolateScope();
+                isolated.hours = 9;
+                isolated.minutes = 30;
+
+                $rootScope.$digest();
+
+                expect($scope.date.date()).toBe(12);
+                expect($scope.date.month()).toBe(2);
+                expect($scope.date.year()).toBe(2016);
+            });
+
             describe('should have minute choices ', function () {
                 it('that default to 0 .. 59', function () {
 
@@ -552,8 +572,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(1)').attr('label')).toBe('00');
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('10');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('00');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('09');
                 });
 
                 it('that are not trailed with 0s by default', function () {
@@ -563,8 +583,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(1)').attr('label')).toBe('0');
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('10');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('0');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('9');
                 });
             });
 

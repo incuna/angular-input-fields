@@ -242,23 +242,34 @@
                         scope.$watchGroup(['hours', 'minutes'], function (newValues) {
                             var hours = scope.hours;
                             var minutes = scope.minutes;
-                            var timeObject = {};
 
-                            if (angular.isDefined(hours)) {
-                                timeObject.hours = hours;
+                            var newDatetime;
+
+                            if (scope.useDuration) {
+                                newDatetime = moment.duration({
+                                    hours: hours,
+                                    minutes: minutes
+                                });
+                            } else {
+                                newDatetime = cast(scope.model);
+
+                                if (angular.isDefined(hours)) {
+                                    newDatetime.hours(hours);
+                                }
+                                if (angular.isDefined(minutes)) {
+                                    newDatetime.minutes(minutes);
+                                }
                             }
-                            if (angular.isDefined(minutes)) {
-                                timeObject.minutes = minutes;
-                            }
-                            scope.model = cast(timeObject);
+
+                            scope.model = newDatetime;
                         });
 
                         scope.$watch('model', function (value) {
                             if (angular.isDefined(scope.model)) {
-                                value = cast(scope.model);
-                                var timeObject = {};
                                 var hours = group[0];
                                 var minutes = group[1];
+                                value = cast(scope.model);
+                                var timeObject = {};
 
                                 if (angular.isDefined(hours)) {
                                     timeObject.hours = value.get(hours);
