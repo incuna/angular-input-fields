@@ -1,4 +1,4 @@
-#upcoming
+### 8.1.1
 
 * BUGFIX: moment-select would override any other date information except for hours and minutes
 
