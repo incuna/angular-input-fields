@@ -565,7 +565,7 @@
                     expect(isolated.hourChoices).toEqual(_.range(0, 10));
                 });
 
-                fit('that can be trailed with 0s with pad-hours attribute', function () {
+                it('that can be trailed with 0s with pad-hours attribute', function () {
                     template = '<div aif-moment-select model="moment" hour-max="12" hours-len="2"></div>';
 
                     compiledTemplate = compile(template);
