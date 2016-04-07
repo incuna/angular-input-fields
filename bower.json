@@ -13,18 +13,15 @@
     "tests"
   ],
   "devDependencies": {
-    "angular-mocks": "1.4"
+    "angular-mocks": "1.4 - 1.5"
   },
   "dependencies": {
-    "angular": "1.4",
-    "angular-bind-html-compile": "~1.1",
-    "angular-bootstrap": "1.1.0",
-    "angular-gettext": "0.2.8",
-    "lodash": "4.0.1",
-    "momentjs": "2.10.6",
-    "venturocket-angular-slider": "~0.3"
-  },
-  "resolutions": {
-    "angular": "1.4"
+    "angular": "1.4 - 1.5",
+    "angular-bind-html-compile": "1.x",
+    "angular-bootstrap": "1.1.x",
+    "angular-gettext": "0.2.x",
+    "lodash": "4.0.x",
+    "momentjs": "2.10.x",
+    "venturocket-angular-slider": "0.3.x"
   }
 }
