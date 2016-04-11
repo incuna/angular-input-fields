@@ -19,7 +19,7 @@
     "angular": "1.4 - 1.5",
     "angular-bind-html-compile": "1.x",
     "angular-bootstrap": "1.1.x",
-    "angular-gettext": "0.2.x",
+    "angular-gettext": "0.2 - 2.2",
     "lodash": "4.0.x",
     "momentjs": "2.10.x",
     "venturocket-angular-slider": "0.3.x"
