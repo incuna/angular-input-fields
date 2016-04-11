@@ -572,8 +572,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(1)').attr('label')).toBe('00');
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(10)').attr('label')).toBe('09');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('00');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('09');
                 });
 
                 it('that are not trailed with 0s by default', function () {
@@ -583,8 +583,8 @@
 
                     $rootScope.$digest();
 
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(1)').attr('label')).toBe('0');
-                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(10)').attr('label')).toBe('9');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(2)').attr('label')).toBe('0');
+                    expect($(compiledTemplate, 'select[ng-model="hours"] option:nth-child(11)').attr('label')).toBe('9');
                 });
             });
 
