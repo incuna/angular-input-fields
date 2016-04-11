@@ -1,3 +1,7 @@
+### 8.1.2
+
+* Add angular 1.5 compatibility
+
 ### 8.1.1
 
 * BUGFIX: moment-select would override any other date information except for hours and minutes
