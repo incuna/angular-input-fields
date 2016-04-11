@@ -23,5 +23,8 @@
     "lodash": "4.0.x",
     "momentjs": "2.10.x",
     "venturocket-angular-slider": "0.3.x"
+  },
+  "resolutions": {
+    "angular": ">=1.4 <1.6"
   }
 }
