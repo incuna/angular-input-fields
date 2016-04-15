@@ -1,3 +1,7 @@
+### Upcoming
+
+* Add lodash compatibility for any version bigger than 2 and less than 3.
+
 ### 8.1.2
 
 * Add angular 1.5 compatibility
