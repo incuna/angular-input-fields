@@ -1,4 +1,4 @@
-### Upcoming
+### 8.1.3
 
 * Add lodash compatibility for any version bigger than 2 and less than 3.
 
