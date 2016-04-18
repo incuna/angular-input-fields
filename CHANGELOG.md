@@ -1,3 +1,7 @@
+### Upcoming
+
+* Allow bootstrap to install any version bigger or equal to 1.1 and less than 1.3
+
 ### 8.1.3
 
 * Add lodash compatibility for any version bigger than 2 and less than 3.
