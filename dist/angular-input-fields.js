@@ -137,10 +137,6 @@
 
                     // Set group when model changes.
                     scope.$watch('model', function (value) {
-                        // When the value is null set the set box display to select.
-                        if (value === null) {
-                            scope.model = '';
-                        }
                         if (angular.isDefined(value) && value !== null && value.length > 0) {
                             angular.forEach(scope.groupedChoices, function (group) {
                                 if (angular.isDefined(getGroupChoice(group, value))) {
@@ -157,7 +153,7 @@
                             return;
                         }
 
-                        scope.model = null;
+                        scope.model = '';
                     });
                 }
             };
