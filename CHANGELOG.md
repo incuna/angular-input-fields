@@ -1,3 +1,8 @@
+### Upcoming
+
+* BUGFIX: Fix grouped select. When selecting the value select on the second field the first field will no longer change its value.
+Changing the first field will now set the second field to the value select instead of being blank.
+
 ### 8.1.3
 
 * Add lodash compatibility for any version bigger than 2 and less than 3.
