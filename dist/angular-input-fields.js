@@ -137,7 +137,7 @@
 
                     // Set group when model changes.
                     scope.$watch('model', function (value) {
-                        if (angular.isDefined(value) && value !== null) {
+                        if (angular.isDefined(value) && value !== null && value.length > 0) {
                             angular.forEach(scope.groupedChoices, function (group) {
                                 if (angular.isDefined(getGroupChoice(group, value))) {
                                     scope.group = group;
@@ -153,7 +153,7 @@
                             return;
                         }
 
-                        scope.model = null;
+                        scope.model = '';
                     });
                 }
             };
