@@ -83,7 +83,6 @@
 
                     // Set group when model changes.
                     scope.$watch('model', function (value) {
-
                         // When the value is null set the set box display to select.
                         if (value === null) {
                             scope.model = '';
