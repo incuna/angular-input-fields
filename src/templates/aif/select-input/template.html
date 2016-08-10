@@ -4,8 +4,8 @@
         ng-model="model"
         ng-disabled="disable"
         ng-options="choice.value as choice.display_name for choice in choices"
-        id="{{ field-id }}"
-        name="{{ field-id }}"
+        id="{{ fieldId }}"
+        name="{{ fieldId }}"
         >
         <option value="" ng-if="emptyLabel" ng-bind="emptyLabel"></option>
     </select>

@@ -355,7 +355,8 @@
                     choices: '=',
                     disable: '=?',
                     emptyLabel: '=?',
-                    fieldId: '=?'
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/select-input/template.html'
             };
