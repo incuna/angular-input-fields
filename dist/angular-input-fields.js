@@ -259,6 +259,8 @@
                                 if (angular.isDefined(minutes)) {
                                     newDatetime.minutes(minutes);
                                 }
+
+                                newDatetime.seconds(0);
                             }
 
                             scope.model = newDatetime;
