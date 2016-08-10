@@ -9,7 +9,8 @@
                     model: '=',
                     choices: '=',
                     disable: '=?',
-                    emptyLabel: '=?'
+                    emptyLabel: '=?',
+                    fieldId: '=?'
                 },
                 templateUrl: 'templates/aif/select-input/template.html'
             };
