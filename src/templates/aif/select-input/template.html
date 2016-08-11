@@ -3,7 +3,10 @@
         class="select"
         ng-model="model"
         ng-disabled="disable"
-        ng-options="choice.value as choice.display_name for choice in choices">
+        ng-options="choice.value as choice.display_name for choice in choices"
+        id="{{ fieldId }}"
+        name="{{ fieldId }}"
+        >
         <option value="" ng-if="emptyLabel" ng-bind="emptyLabel"></option>
     </select>
 </div>

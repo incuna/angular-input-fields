@@ -259,6 +259,8 @@
                                 if (angular.isDefined(minutes)) {
                                     newDatetime.minutes(minutes);
                                 }
+
+                                newDatetime.seconds(0);
                             }
 
                             scope.model = newDatetime;
@@ -352,7 +354,9 @@
                     model: '=',
                     choices: '=',
                     disable: '=?',
-                    emptyLabel: '=?'
+                    emptyLabel: '=?',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/select-input/template.html'
             };
@@ -543,7 +547,7 @@ angular.module('aif-select-input').run(['$templateCache', function($templateCach
   'use strict';
 
   $templateCache.put('templates/aif/select-input/template.html',
-    "<div class=select-wrapper><select class=select ng-model=model ng-disabled=disable ng-options=\"choice.value as choice.display_name for choice in choices\"><option value=\"\" ng-if=emptyLabel ng-bind=emptyLabel></option></select></div>"
+    "<div class=select-wrapper><select class=select ng-model=model ng-disabled=disable ng-options=\"choice.value as choice.display_name for choice in choices\" id=\"{{ field-id }}\" name=\"{{ field-id }}\"><option value=\"\" ng-if=emptyLabel ng-bind=emptyLabel></option></select></div>"
   );
 
 }]);

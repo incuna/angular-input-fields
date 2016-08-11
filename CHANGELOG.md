@@ -1,3 +1,7 @@
+### Upcoming
+
+* Add possibility of adding an `id` and `name` to the select template via `field-id` attribute
+
 ### 8.1.4
 
 * BUGFIX: Fix grouped select. When selecting the value select on the second field the first field will no longer change its value.
