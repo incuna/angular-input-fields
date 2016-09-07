@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('aif-slider-input', [
-        'vr.directives.slider',
+        'rzModule',
         'gettext'
     ]).directive('aifSliderInput', [
         'gettextCatalog',
