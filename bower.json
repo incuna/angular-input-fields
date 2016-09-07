@@ -22,7 +22,7 @@
     "angular-gettext": "0.2 - 2.2",
     "lodash": "4.0.x",
     "momentjs": "2.x",
-    "venturocket-angular-slider": "0.3.x"
+    "angularjs-slider": "5.x"
   },
   "resolutions": {
     "angular": ">=1.4 <1.6"
