@@ -1,15 +1,14 @@
 <div class="input-wrapper slider-wrapper">
       <div
-        slider
-        ng-class="className"
-        translate-fn="translateFn"
-        ng-model="model"
-        floor="0"
-        step="1"
-        no-bubble-adjustment="true"
-        pointer-width-override="28"
-        ceiling="{{ ceiling }}"
-        ng-disabled="disable">
+        rzslider
+        rz-slider-model="model"
+        rz-slider-options="{
+          floor: 0,
+          ceil: ceiling,
+          translate: translateFn,
+          disabled: disable
+        }"
+        ng-class="className"></div>
     </div>
     <div class="step-indicator-container">
         <span class="step perc-0" ng-bind="sliderLowLabel"></span>
