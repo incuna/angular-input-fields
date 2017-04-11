@@ -18,19 +18,24 @@ module.exports = function (grunt) {
 
     concatConfig.target = {
         src: [
-            'src/scripts/**/directives.js',
-            'src/scripts/**/templates.js',
-            'src/scripts/init.js'
+            'src/**/directives.js',
+            'src/**/templates.js',
+            'src/angular-input-fields/init.js'
         ],
         dest: 'dist/angular-input-fields.js'
     };
 
-    var modules = fs.readdirSync('src/templates/aif');
+    var modules = fs.readdirSync('src');
     _.each(modules, function (module) {
+        var modulePath = modules + '/' + module;
+        if (!grunt.file.isDir(modulePath)) {
+            // Only work with directories.
+            return;
+        }
         ngtemplatesConfig[module] = {
             cwd: 'src',
-            src: `templates/aif/${module}/**/*.html`,
-            dest: `src/scripts/${module}/templates.js`,
+            src: `src/${module}/templates/aif/**/*.html`,
+            dest: `src/${module}/templates.js`,
             options: {
                 module: `aif-${module}`
             }
@@ -64,7 +69,7 @@ module.exports = function (grunt) {
         },
         watch: {
             templates: {
-                files: 'src/templates/**/*.html',
+                files: 'src/**/templates/aif/*.html',
                 tasks: 'ngtemplates'
             },
             js: {

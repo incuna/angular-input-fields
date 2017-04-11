@@ -6,7 +6,7 @@
             return {
                 restrict: 'A',
                 replace: true,
-                templateUrl: 'templates/aif/boolean-input/template.html',
+                templateUrl: 'templates/aif/boolean-input.html',
                 scope: {
                     model: '=',
                     disable: '=?'
@@ -45,7 +45,7 @@
                     label: '=',
                     disable: '=?'
                 },
-                templateUrl: 'templates/aif/checkbox-input/template.html'
+                templateUrl: 'templates/aif/checkbox-input.html'
             };
         }
     ]);
@@ -72,7 +72,7 @@
                     disable: '=?',
                     emptyLabel: '=?'
                 },
-                templateUrl: 'templates/aif/grouped-select-input/template.html',
+                templateUrl: 'templates/aif/grouped-select-input.html',
                 link: function (scope, element, attrs) {
 
                     // Helper method to get a group's choice based on a value.
@@ -215,7 +215,7 @@
                     hoursSuffix: '@',
                     minutesSuffix: '@'
                 },
-                templateUrl: 'templates/aif/moment-select/template.html',
+                templateUrl: 'templates/aif/moment-select.html',
                 compile: function (element, attrs) {
                     // Add default attributes
                     _.defaults(attrs, {
@@ -302,7 +302,7 @@
                     model: '=',
                     disable: '=?'
                 },
-                templateUrl: 'templates/aif/number-input/template.html'
+                templateUrl: 'templates/aif/number-input.html'
             };
         }
     ]);
@@ -321,7 +321,7 @@
                     choices: '=',
                     disable: '=?'
                 },
-                templateUrl: 'templates/aif/radio-input/template.html',
+                templateUrl: 'templates/aif/radio-input.html',
                 link: function (scope) {
                     scope.localModel = {};
                     var modelWatchDeregister = scope.$watch('model', function (value) {
@@ -358,7 +358,7 @@
                     fieldId: '=?',
                     form: '=?'
                 },
-                templateUrl: 'templates/aif/select-input/template.html'
+                templateUrl: 'templates/aif/select-input.html'
             };
         }
     ]);
@@ -382,7 +382,7 @@
                     disable: '=?',
                     emptyLabel: '=?'
                 },
-                templateUrl: 'templates/aif/single-choice-input/template.html'
+                templateUrl: 'templates/aif/single-choice-input.html'
             };
         }
     ]);
@@ -401,7 +401,7 @@
             return {
                 restrict: 'A',
                 replace: true,
-                templateUrl: 'templates/aif/slider-input/template.html',
+                templateUrl: 'templates/aif/slider-input.html',
                 scope: {
                     model: '=',
                     disable: '=?',
@@ -449,7 +449,7 @@
                     choices: '=',
                     disable: '=?'
                 },
-                templateUrl: 'templates/aif/switch-input/template.html',
+                templateUrl: 'templates/aif/switch-input.html',
                 link: function (scope, element, attrs) {
                     // Work around btn-radio ng-model bind issues
                     scope.data = {
@@ -483,7 +483,7 @@
                     model: '=',
                     disable: '=?'
                 },
-                templateUrl: 'templates/aif/text-input/template.html'
+                templateUrl: 'templates/aif/text-input.html'
             };
         }
     ]);
@@ -547,7 +547,7 @@ angular.module('aif-select-input').run(['$templateCache', function($templateCach
   'use strict';
 
   $templateCache.put('templates/aif/select-input/template.html',
-    "<div class=select-wrapper><select class=select ng-model=model ng-disabled=disable ng-options=\"choice.value as choice.display_name for choice in choices\" id=\"{{ field-id }}\" name=\"{{ field-id }}\"><option value=\"\" ng-if=emptyLabel ng-bind=emptyLabel></option></select></div>"
+    "<div class=select-wrapper><select class=select ng-model=model ng-disabled=disable ng-options=\"choice.value as choice.display_name for choice in choices\" id=\"{{ fieldId }}\" name=\"{{ fieldId }}\"><option value=\"\" ng-if=emptyLabel ng-bind=emptyLabel></option></select></div>"
   );
 
 }]);
