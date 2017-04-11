@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 var _ = require('lodash');
 
 module.exports = function (grunt) {
@@ -20,21 +21,21 @@ module.exports = function (grunt) {
         src: [
             'src/**/directives.js',
             'src/**/templates.js',
-            'src/angular-input-fields/init.js'
+            'src/init.js'
         ],
         dest: 'dist/angular-input-fields.js'
     };
 
     var modules = fs.readdirSync('src');
     _.each(modules, function (module) {
-        var modulePath = modules + '/' + module;
+        var modulePath = path.join('src', module);
         if (!grunt.file.isDir(modulePath)) {
             // Only work with directories.
             return;
         }
         ngtemplatesConfig[module] = {
-            cwd: 'src',
-            src: `src/${module}/templates/aif/**/*.html`,
+            cwd: `src/${module}`,
+            src: 'templates/aif/**/*.html',
             dest: `src/${module}/templates.js`,
             options: {
                 module: `aif-${module}`

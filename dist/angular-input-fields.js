@@ -492,7 +492,7 @@
 angular.module('aif-boolean-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/boolean-input/template.html',
+  $templateCache.put('templates/aif/boolean-input.html',
     "<div><div class=radio><label class=control-label><input type=radio ng-model=boolValue value=true ng-disabled=disable> <span translate>Yes</span></label><label class=control-label><input type=radio ng-model=boolValue value=false ng-disabled=disable> <span translate>No</span></label></div><select class=select ng-model=boolValue ng-disabled=disable><option value=true translate>Yes</option><option value=false translate>No</option></select></div>"
   );
 
@@ -501,7 +501,7 @@ angular.module('aif-boolean-input').run(['$templateCache', function($templateCac
 angular.module('aif-checkbox-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/checkbox-input/template.html',
+  $templateCache.put('templates/aif/checkbox-input.html',
     "<div class=checkbox><label class=\"control-label input-wrapper\"><input type=checkbox ng-model=model ng-disabled=disable> <span bind-html-compile=label></span></label></div>"
   );
 
@@ -510,7 +510,7 @@ angular.module('aif-checkbox-input').run(['$templateCache', function($templateCa
 angular.module('aif-grouped-select-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/grouped-select-input/template.html',
+  $templateCache.put('templates/aif/grouped-select-input.html',
     "<div class=grouped-select-wrapper><div class=primary aif-select-input model=group choices=groups disable=disable empty-label=emptyLabel></div><div class=secondary aif-select-input model=model choices=group.choices disable=\"disable || !group.choices.length\"></div></div>"
   );
 
@@ -519,7 +519,7 @@ angular.module('aif-grouped-select-input').run(['$templateCache', function($temp
 angular.module('aif-moment-select').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/moment-select/template.html',
+  $templateCache.put('templates/aif/moment-select.html',
     "<div class=duration-select-wrapper><table><tbody><tr><td><select class=select ng-model=hours ng-disabled=disable ng-options=\"hour as (hour|aifNumberPadding:hoursLen|aifAddSuffix:hoursSuffix) for hour in hourChoices\"></select></td><td><select class=select ng-model=minutes ng-disabled=disable ng-options=\"minute as (minute|aifNumberPadding:minutesLen|aifAddSuffix:minutesSuffix) for minute in minuteChoices\"></select></td></tr></tbody></table></div>"
   );
 
@@ -528,7 +528,7 @@ angular.module('aif-moment-select').run(['$templateCache', function($templateCac
 angular.module('aif-number-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/number-input/template.html',
+  $templateCache.put('templates/aif/number-input.html',
     "<div><label class=\"control-label input-wrapper\"><input type=number ng-model=model ng-disabled=disable></label></div>"
   );
 
@@ -537,7 +537,7 @@ angular.module('aif-number-input').run(['$templateCache', function($templateCach
 angular.module('aif-radio-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/radio-input/template.html',
+  $templateCache.put('templates/aif/radio-input.html',
     "<div class=radio-wrapper><div class=radio ng-repeat=\"choice in choices\"><label class=control-label><input type=radio ng-model=localModel.value ng-value=choice.value ng-disabled=disable> {{ choice.display_name }}</label></div></div>"
   );
 
@@ -546,7 +546,7 @@ angular.module('aif-radio-input').run(['$templateCache', function($templateCache
 angular.module('aif-select-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/select-input/template.html',
+  $templateCache.put('templates/aif/select-input.html',
     "<div class=select-wrapper><select class=select ng-model=model ng-disabled=disable ng-options=\"choice.value as choice.display_name for choice in choices\" id=\"{{ fieldId }}\" name=\"{{ fieldId }}\"><option value=\"\" ng-if=emptyLabel ng-bind=emptyLabel></option></select></div>"
   );
 
@@ -555,7 +555,7 @@ angular.module('aif-select-input').run(['$templateCache', function($templateCach
 angular.module('aif-single-choice-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/single-choice-input/template.html',
+  $templateCache.put('templates/aif/single-choice-input.html',
     "<div class=single-choice-wrapper><div aif-radio-input model=model choices=choices disable=disable></div><div aif-select-input model=model empty-label=emptyLabel choices=choices disable=disable></div></div>"
   );
 
@@ -564,7 +564,7 @@ angular.module('aif-single-choice-input').run(['$templateCache', function($templ
 angular.module('aif-slider-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/slider-input/template.html',
+  $templateCache.put('templates/aif/slider-input.html',
     "<div class=\"input-wrapper slider-wrapper\"><div slider ng-class=className translate-fn=translateFn ng-model=model floor=0 step=1 no-bubble-adjustment=true pointer-width-override=28 ceiling=\"{{ ceiling }}\" ng-disabled=disable></div><div class=step-indicator-container><span class=\"step perc-0\" ng-bind=sliderLowLabel></span> <span ng-if=sliderMiddleLabel class=\"step perc-50\" ng-bind=sliderMiddleLabel></span> <span class=\"step perc-100\" ng-bind=sliderHighLabel></span></div></div>"
   );
 
@@ -573,7 +573,7 @@ angular.module('aif-slider-input').run(['$templateCache', function($templateCach
 angular.module('aif-switch-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/switch-input/template.html',
+  $templateCache.put('templates/aif/switch-input.html',
     "<div class=\"input-wrapper switch-wrapper\"><div class=switch><div ng-repeat=\"choice in choices\" class=option ng-model=data.model uib-btn-radio=choice.value>{{ choice.display_name }}</div></div></div>"
   );
 
@@ -582,7 +582,7 @@ angular.module('aif-switch-input').run(['$templateCache', function($templateCach
 angular.module('aif-text-input').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('templates/aif/text-input/template.html',
+  $templateCache.put('templates/aif/text-input.html',
     "<div><label class=\"control-label input-wrapper\"><input type=text ng-model=model ng-disabled=disable></label></div>"
   );
 
