@@ -8,7 +8,9 @@
                 scope: {
                     model: '=',
                     choices: '=',
-                    disable: '=?'
+                    disable: '=?',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/radio-input.html',
                 link: function (scope) {

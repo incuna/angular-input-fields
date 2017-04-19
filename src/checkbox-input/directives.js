@@ -11,7 +11,9 @@
                 scope: {
                     model: '=',
                     label: '=',
-                    disable: '=?'
+                    disable: '=?',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/checkbox-input.html'
             };

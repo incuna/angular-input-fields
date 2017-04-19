@@ -2,7 +2,7 @@ angular.module('aif-number-input').run(['$templateCache', function($templateCach
   'use strict';
 
   $templateCache.put('templates/aif/number-input.html',
-    "<div><label class=\"control-label input-wrapper\"><input type=number ng-model=model ng-disabled=disable></label></div>"
+    "<div class=number-input-wrapper><input class=number-input id=\"{{ fieldId }}\" type=number ng-model=model ng-disabled=disable></div>"
   );
 
 }]);

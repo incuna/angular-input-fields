@@ -8,7 +8,9 @@
                 replace: true,
                 scope: {
                     model: '=',
-                    disable: '=?'
+                    disable: '=?',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/text-input.html'
             };

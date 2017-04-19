@@ -43,7 +43,9 @@
                 scope: {
                     model: '=',
                     label: '=',
-                    disable: '=?'
+                    disable: '=?',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/checkbox-input.html'
             };
@@ -300,7 +302,10 @@
                 replace: true,
                 scope: {
                     model: '=',
-                    disable: '=?'
+                    disable: '=?',
+                    label: '=',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/number-input.html'
             };
@@ -319,7 +324,9 @@
                 scope: {
                     model: '=',
                     choices: '=',
-                    disable: '=?'
+                    disable: '=?',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/radio-input.html',
                 link: function (scope) {
@@ -481,7 +488,10 @@
                 replace: true,
                 scope: {
                     model: '=',
-                    disable: '=?'
+                    disable: '=?',
+                    label: '=',
+                    fieldId: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/text-input.html'
             };
@@ -502,7 +512,7 @@ angular.module('aif-checkbox-input').run(['$templateCache', function($templateCa
   'use strict';
 
   $templateCache.put('templates/aif/checkbox-input.html',
-    "<div class=checkbox><label class=\"control-label input-wrapper\"><input type=checkbox ng-model=model ng-disabled=disable> <span bind-html-compile=label></span></label></div>"
+    "<div class=checkbox><input class=checkbox-input type=checkbox ng-model=model ng-disabled=disable id=\"{{ fieldId }}\"><label class=\"control-label input-wrapper\" for=\"{{ fieldId }}\"><span bind-html-compile=label></span></label></div>"
   );
 
 }]);
@@ -529,7 +539,7 @@ angular.module('aif-number-input').run(['$templateCache', function($templateCach
   'use strict';
 
   $templateCache.put('templates/aif/number-input.html',
-    "<div><label class=\"control-label input-wrapper\"><input type=number ng-model=model ng-disabled=disable></label></div>"
+    "<label class=control-label for=\"{{ fieldId }}\"><span bind-html-compile=label></span></label><input class=number-input id=\"{{ fieldId }}\" type=number ng-model=model ng-disabled=disable>"
   );
 
 }]);
@@ -538,7 +548,7 @@ angular.module('aif-radio-input').run(['$templateCache', function($templateCache
   'use strict';
 
   $templateCache.put('templates/aif/radio-input.html',
-    "<div class=radio-wrapper><div class=radio ng-repeat=\"choice in choices\"><label class=control-label><input type=radio ng-model=localModel.value ng-value=choice.value ng-disabled=disable> {{ choice.display_name }}</label></div></div>"
+    "<div class=radio-wrapper><div class=radio ng-repeat=\"choice in choices\"><input class=radio-input type=radio ng-model=localModel.value ng-value=choice.value ng-disabled=disable id=\"{{ fieldId }}\" name=\"{{ fieldId }}\"><label class=control-label for=\"{{ fieldId }}\">{{ choice.display_name }}</label></div></div>"
   );
 
 }]);
@@ -583,7 +593,7 @@ angular.module('aif-text-input').run(['$templateCache', function($templateCache)
   'use strict';
 
   $templateCache.put('templates/aif/text-input.html',
-    "<div><label class=\"control-label input-wrapper\"><input type=text ng-model=model ng-disabled=disable></label></div>"
+    "<label class=control-label for=\"{{ fieldId }}\"><span bind-html-compile=label></span></label><input class=text-input id=\"{{ fieldId }}\" type=text ng-model=model ng-disabled=disable>"
   );
 
 }]);
