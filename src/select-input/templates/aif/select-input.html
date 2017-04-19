@@ -3,11 +3,11 @@
         class="select"
         ng-model="model"
         ng-disabled="disable"
-        ng-options="choice.value as choice.display_name for choice in choices"
         id="{{ fieldId }}"
         name="{{ fieldId }}"
-        ng-focus="form.{{ model }}.hasFocus = true"
-        ng-blur="form.{{ model }}.hasFocus = false"
+        ng-focus="form.fieldId.hasFocus = true"
+        ng-blur="form.fieldId.hasFocus = false"
+        ng-options="choice.value as choice.display_name for choice in choices"
         >
         <option value="" ng-if="emptyLabel" ng-bind="emptyLabel"></option>
     </select>
