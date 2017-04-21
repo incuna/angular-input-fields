@@ -11,7 +11,7 @@
                     disable: '=?',
                     emptyLabel: '=?',
                     fieldId: '=?',
-                    form: '=?',
+                    form: '=?'
                 },
                 templateUrl: 'templates/aif/select-input.html'
             };
