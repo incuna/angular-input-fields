@@ -1,6 +1,9 @@
 ### Upcoming
 
 * Add possibility of adding an `id` and `name` to the select template via `field-id` attribute
+* Restructure templates to live inside module folders, update gruntfile to match
+* Rename templates to match their module name and put them in
+ `templates/aif/[module].html`
 
 ### 8.1.4
 
