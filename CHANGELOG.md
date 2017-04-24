@@ -1,4 +1,4 @@
-### Upcoming
+### 9.0.0
 
 * Add possibility of adding an `id` and `name` to the select template via `field-id` attribute
 * Restructure templates to live inside module folders, update gruntfile to match

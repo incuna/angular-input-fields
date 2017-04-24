@@ -1,6 +1,6 @@
 {
   "name": "angular-input-fields",
-  "version": "8.1.4",
+  "version": "9.0.0",
   "dependencies": {},
   "devDependencies": {
     "grunt": "0.4.5",
